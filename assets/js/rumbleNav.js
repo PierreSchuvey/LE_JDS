@@ -1,6 +1,6 @@
 
-  $('#myProfil, #historyShasses').jrumble();
-  $('#myProfil, #historyShasses').hover(function(){
+  $('.libelNav').jrumble();
+  $('.libelNav').hover(function(){
      $(this).trigger('startRumble');
    },
    function(){

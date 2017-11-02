@@ -1,12 +1,12 @@
 *{
   letter-spacing: 2px;
   font-family: 'Pokemon Solid';
-  padding: auto;
 }
 body{
   background-color: rgba(215,163,163,0.3);
 }
 #navigateur{
+  font-size: 10px;
   position: relative;
   height: 59px;
   background-color:rgba(155, 19, 19, 0.85);
@@ -22,21 +22,136 @@ body{
 #logonav{
   position: absolute;
   margin-top: 5px;
-  margin-left: 5%;
   filter:drop-shadow(0px 0px 15px black);
 }
-#profilBox{
+.colNav{
   margin-top: 10px;
 }
-#myProfil, #historyShasses{
-  font-size:30px;
+.libelNav{
+  font-size:180%;
   text-decoration: none;
   color:white;
   background-color: inherit;
 }
 .searchText{
-  width: 300px;
+  width:55%;
   height:40px;
   letter-spacing:3px;
   color:rgba(155, 19, 19, 0.85);
 }
+#subnav a{
+  font-size: 150%;
+}
+#subnav a:hover{
+  text-decoration: none;
+  color:#8E1010;
+  font-size: 150%;
+}
+#navigateur a:hover{
+  text-decoration: none;
+  color:#FD6868;
+}
+.imgNav{
+  margin-right: 5px;
+}
+#btnaccrdeon{
+  visibility: hidden;
+}
+#menu-accordeon {
+  background-image: url(/assets/img/burger.png);
+  border-style: solid;
+  border-radius: 50%;
+  font-size: 20px;
+  padding:0;
+  margin-top:5px;
+  list-style:none;
+  text-align: center;
+  width: 46px;
+  height: 46px;
+  position: fixed;
+  z-index: 10000;
+  color: black;
+}
+#menu-accordeon ul {
+  padding:0;
+  margin:0;
+  text-align: center;
+  position: fixed;
+}
+#menu-accordeon li li {
+   max-height:0;
+   overflow: hidden;
+   transition: all 1s;
+   box-shadow: none;
+   border:none;
+   margin:0;
+}
+#menu-accordeon a {
+  margin-top: 20px;
+  margin-left: 20%;
+  display:block;
+  color: rgba(155, 19, 19, 0.85);
+  text-decoration: none;
+  padding: 8px 0;
+}
+#menu-accordeon ul li a, #menu-accordeon li:hover li a {
+  font-size:1em
+}
+#menu-accordeon li:hover li {
+  max-height: 15em;
+}
+/*lg = 1200 md = 992 sm = 768*/
+@media screen and (max-width : 500px){
+  #logonavxs{
+    width:100px;
+    position:relative;
+    filter:drop-shadow(0px 0px 15px black);
+  }
+  #searchButton{
+    width:30px;
+    height:30px;
+  }
+  #menu-accordeon{
+    display: none;
+  }
+  #ul500{
+    list-style-image: url(/assets/img/ballul.png);
+    margin-top: 10px;
+  }
+  #ul500 a{
+    color: rgba(155, 19, 19, 0.85);
+    text-decoration: none;
+  }
+  #ul500 a:hover{
+    color: pink;
+    color:#FD6868;
+  }
+  .search{
+    padding-top: 10px;
+  }
+  }
+@media screen and (min-width : 500px) and (max-width : 767px){
+  #logonavxs{
+    width:100px;
+    position:relative;
+    filter:drop-shadow(0px 0px 15px black);
+  }
+  #searchButton{
+    width:30px;
+    height:30px;
+  }
+  #ul500{
+    display: none;
+  }
+  .search{
+    padding-top: 10px;
+  }
+  }
+@media screen and (min-width : 768px) and (max-width:991px){
+  .libelNav{
+    font-size:14px;
+    text-decoration: none;
+    color:white;
+    background-color: inherit;
+  }
+  }
