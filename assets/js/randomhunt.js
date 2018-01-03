@@ -1,0 +1,29 @@
+$('#randomFocus').css('display','none');
+$('#lastCaptureS').css('display','none');
+    $("#randomHub").click(function(){
+      $('#randomHub').fadeOut(function(){
+      $('#randomFocus').fadeIn('5s');
+      $('#shinyWanted').css('display','none');
+      $('#pkmWanted').mousedown(function(){
+        $('#shinyWanted').css('display','block');
+        $('#pkmWanted').css('display','none');
+      });
+      $('#shinyWanted').mouseup(function(){
+        $('#shinyWanted').css('display','none');
+        $('#pkmWanted').css('display','block');
+      });
+      });
+    });
+$("#reloadRandom").click(function(){
+    $('#randomFocus').fadeOut(function(){
+    $('#randomHub').fadeIn('5s');
+  });
+});
+$("#lastCapture").mousedown(function(){
+  $('#lastCaptureS').css('display','block');
+    $('#lastCapture').css('display','none');
+  });
+$('#lastCaptureS').mouseup(function(){
+  $('#lastCaptureS').css('display','none');
+  $('#lastCapture').css('display','block');
+  });

@@ -1,0 +1,11 @@
+$('#validModifTextarea').css('display','none');
+$('#modifTextarea').click(function(){
+  $('#validModifTextarea').css('display','block');
+  $('#aboutMe').prop('disabled',false);
+  $('#aboutMe').prop('readonly',false);
+});
+$('#validModifTextarea').click(function(){
+  $('#validModifTextarea').css('display','none');
+  $('#aboutMe').prop('disabled',true);
+  $('#aboutMe').prop('readonly',true);
+});

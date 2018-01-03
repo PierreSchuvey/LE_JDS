@@ -1,0 +1,200 @@
+.topLog{
+    margin-top:40px;
+}
+.introInfos{
+    font-size: 30px;
+    margin-top:  30px;
+    text-align: center;
+}
+.ratioStats{
+    margin-top: 20px;
+}
+.ratioGeneration{
+    font-size:25px;
+}
+#ratioHub p{
+    font-size:15px;
+}
+#infoHub{
+    margin-top:40px;
+}
+#showRatios {
+    background-color:#B56A6A;
+    -moz-border-radius:28px;
+    -webkit-border-radius:28px;
+    border-radius:28px;
+    border:3px solid #A73232;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    letter-spacing: 5px;
+    font-size:17px;
+    padding:16px 31px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+}
+#showRatios:hover {
+    background-color:#A73232;
+    border:3px solid #B56A6A;
+}
+#hideRatios {
+    background-color:#B56A6A;
+    -moz-border-radius:28px;
+    -webkit-border-radius:28px;
+    border-radius:28px;
+    border:1px solid #A73232;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    letter-spacing: 5px;
+    font-size:17px;
+    padding:16px 31px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+}
+#hideRatios:hover {
+    background-color:#A73232;
+}
+#aboutMe{
+    background: #B56A6A;
+    color : white;
+    border-radius: 10px;
+    width : 90%;
+}
+#profilImage{
+    box-shadow:0px 5px 10px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+.bodyPage{
+    width: 66.1%;
+    background-color: rgba(215,163,163,0.1);
+    min-height: 700px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#caProfil{
+    font-size : 15px;
+    margin-left: 22%;
+}
+#welcomeText{
+    font-size : 50px;
+}
+#friendPark{
+    margin-top: 3%;
+    margin-left: 45%;
+}
+#typePark{
+    width:50px;
+}
+#pkmPark{
+    margin-left:42%;
+}
+#moreProgress{
+    font-size: 50px;
+    background: none;
+    border:none;
+    width:30px;
+}
+#reduceProgress{
+    font-size: 50px;
+    background: none;
+    border:none;
+    width:30px;
+}
+.progressProfil{
+    padding-top: 20px;
+}
+.progress{
+    height : 20px;
+}
+.progressAchievement{
+    background : green ;
+    background-image:radial-gradient(white, green);
+}
+.barProgress{
+    background-image:radial-gradient(white, red);
+    border:solid 2px black;
+}
+#progressAllG{
+
+    width: 1%;
+    height: 30px;
+    background-color: green;
+}
+textarea{
+    resize: none;
+}
+@media screen and (max-width : 499px){
+    #profilImage{
+        width : 140px;
+    }
+    #welcomeText{
+        font-size : 12px;
+        margin-top: 10px;
+    }
+    .introInfos{
+        font-size : 12px;
+        margin-top: 20px;
+    }
+    #pkmPark{
+        margin-left: 0;
+    }
+    #caProfil{
+        font-size : 10px;
+    }
+    #friendPark{
+        font-size : 10px;
+    }
+}
+@media screen and (min-width : 500px) and (max-width : 767px){
+    #profilImage{
+        width : 150px;
+    }
+    #welcomeText{
+        font-size : 20px;
+    }
+    #caProfil{
+        font-size : 10px;
+    }
+    #friendPark{
+        font-size : 10px;
+    }
+    #typePark{
+        width:40px;
+    }
+    #pkmPark{
+        margin-left: 0;
+    }
+    #lienancre11,#lienancre12,#lienancre13{
+        margin-left: 20px;
+    }
+}
+@media screen and (min-width : 768px) and (max-width:991px){
+    .libelNav{
+        font-size:14px;
+        text-decoration: none;
+        color:white;
+        background-color: inherit;
+    }
+    #welcomeText{
+        font-size : 20px;
+    }
+    #caProfil{
+        font-size : 10px;
+    }
+    #profilImage{
+        width : 150px;
+    }
+}
+@media screen and (min-width : 1200px) and (max-width:1355px){
+    #welcomeText{
+        margin-left: 20px;
+        font-size: 30px;
+    }
+    #caProfil{
+        margin-left: 20px;
+    }
+    #safariHub{
+        margin-left: 120px;
+    }
+}
