@@ -1,10 +1,18 @@
 <?php require_once 'util.php'; ?>
 <?php include 'header.php' ?>
-<?php include 'leftbar.php' ?>
+<!--<?php include 'leftbar.php' ?>-->
 <?php
 if ($_SESSION['connected'] == 1) {
-    ?>
+    $sesionPseudo = $_SESSION['pseudo'];
+    $req = $dbh->query('SELECT * FROM users WHERE pseudo = \'' . $sesionPseudo . '\'');
+    while ($row = $req->fetch()) {
+        $profilesPicture = $row['profilePicture'];
+        $pseudo = $row['pseudo'];
+        $friendCode = $row['friendCode'];
+        $bioUsers = $row['bioUsers'];
     }
+    ?>
+
     <div class="hidden-xs hidden-sm" id="lastCaptureHub">
         <img id="lastCapture" src="/assets/gif/zorua.gif"/>
         <img id="lastCaptureS" src="/assets/gif/zoruaS.gif"/>
@@ -17,13 +25,13 @@ if ($_SESSION['connected'] == 1) {
     <div class="container bodyPage">
         <div class="row">
             <div class="col-xs-offset-1 col-sm-offset-0 col-sm-1 col-md-offset-3 col-md-5 col-lg-offset-0 col-lg-1">
-                <img id="profilImage" src=assets/img/profil.png />
+                <img id="profilImage" src="<?php echo $profilesPicture; ?>" />
             </div>
             <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
-                <p id="welcomeText" class="mainTitle">Bienvenue, <?php echo $_POST['pseudoLog']; ?> !</p>
+                <p id="welcomeText" class="mainTitle">Bienvenue, <?php echo $pseudo; ?> !</p>
             </div>
             <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
-                <p id="caProfil">Code Ami : 0000-0000-0000-0000</p>
+                <p id="caProfil">Code Ami : <?php echo $friendCode; ?></p>
             </div>
             <div id="safariHub">
                 <div class="col-xs-10 col-sm-11 col-md-9 col-lg-10">
@@ -43,7 +51,7 @@ if ($_SESSION['connected'] == 1) {
             <div class="row">
                 <div class="col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
                     <p>A propos de moi : <span id="modifTextarea">Modifier </span></p>
-                    <textarea id="aboutMe" name="aboutMe" rows="10" cols="83" readonly disabled></textarea>
+                    <textarea id="aboutMe" name="aboutMe" rows="10" cols="83" readonly disabled><?php echo utf8_encode($bioUsers); ?></textarea>
                 </div>
             </div>
             <div class="row">
@@ -106,77 +114,77 @@ if ($_SESSION['connected'] == 1) {
                     </div>
                     <div class="col-lg-6 progressProfil">
                         <p>Formes d'alola</p>
-                        <div class="progress barProgress">
-                            <div class="progress progressAchievement" id="progressAlola" aria-valuenow="1"></div>
+                        <div class = "progress barProgress">
+                            <div class = "progress progressAchievement" id = "progressAlola" aria-valuenow = "1"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr /><button id="showRatios">Voir les ratios de captures</button><button id="hideRatios">Cacher les ratios de captures</button><hr />
-            <div id="ratioHub">
-                <div class="row ratioStats">
-                    <div class="col-lg-offset-1 col-lg-6">
-                        <strong><span class="ratioGeneration">1ére Génération :</span></strong>
-                        <p>Random full odds : <span class="odds8000">7000</span> rencontres</p>
-                        <p>Reset: <span class="odds8000">9000</span> rencontres</p>
+            <hr /><button id = "showRatios">Voir les ratios de captures</button><button id = "hideRatios">Cacher les ratios de captures</button><hr />
+            <div id = "ratioHub">
+                <div class = "row ratioStats">
+                    <div class = "col-lg-offset-1 col-lg-6">
+                        <strong><span class = "ratioGeneration">1ére Génération :</span></strong>
+                        <p>Random full odds : <span class = "odds8000">7000</span> rencontres</p>
+                        <p>Reset: <span class = "odds8000">9000</span> rencontres</p>
                     </div>
-                    <div class="col-lg-5">
-                        <span class="ratioGeneration">2éme Génération :</span>
-                        <p>Random full odds : <span class="odds8000">6000</span> rencontres</p>
-                        <p>Elevage full odds : <span class="odds8000">9000</span> rencontres</p>
-                        <p>Elevage 1/64 : <span class="oeuf64">64</span> rencontres</p>
-                    </div>
-                </div>
-                <div class="row ratioStats">
-                    <div class="col-lg-offset-1 col-lg-6">
-                        <span class="ratioGeneration">3éme Génération :</span>
-                        <p>Random full odds : <span class="odds8000">4000</span> rencontres</p>
-                        <p>Reset: <span class="odds8000">6752</span> rencontres</p>
-                    </div>
-                    <div class="col-lg-5">
-                        <span class="ratioGeneration">4éme Génération :</span>
-                        <p>Random full odds : <span class="odds8000">4000</span> rencontres</p>
-                        <p>Reset: <span class="odds8000">6752</span> rencontres</p>
-                        <p>Masuda : <span class="masudaDP">2000</span> rencontres</p>
+                    <div class = "col-lg-5">
+                        <span class = "ratioGeneration">2éme Génération :</span>
+                        <p>Random full odds : <span class = "odds8000">6000</span> rencontres</p>
+                        <p>Elevage full odds : <span class = "odds8000">9000</span> rencontres</p>
+                        <p>Elevage 1/64 : <span class = "oeuf64">64</span> rencontres</p>
                     </div>
                 </div>
-                <div class="row ratioStats">
-                    <div class="col-lg-offset-1 col-lg-6">
-                        <span class="ratioGeneration">5éme Génération :</span>
-                        <p>Random full odds : <span class="odds8000">4000</span> rencontres</p>
-                        <p>Random Charme Chroma : <span class="oddsCC">6752</span> rencontres</p>
-                        <p>Reset full odds: <span class="odds8000">9000</span> rencontres</p>
-                        <p>Reset Charme Chroma : <span class="oddsCC">6752</span> rencontres</p>
-                        <p>Masuda full odds:<span class="masudaNB"> 9000</span> rencontres</p>
-                        <p>Masuda Charme Chroma : <span class="masudaNBCC">6752</span> rencontres</p>
+                <div class = "row ratioStats">
+                    <div class = "col-lg-offset-1 col-lg-6">
+                        <span class = "ratioGeneration">3éme Génération :</span>
+                        <p>Random full odds : <span class = "odds8000">4000</span> rencontres</p>
+                        <p>Reset: <span class = "odds8000">6752</span> rencontres</p>
                     </div>
-                    <div class="col-lg-5">
-                        <span class="ratioGeneration">6éme Génération :</span>
-                        <p>Random full odds : <span class="odds4000">6752</span> rencontres</p>
-                        <p>Random Charme Chroma : <span class="oddsCC6G">6752</span> rencontres</p>
-                        <p>Reset full odds : <span class="odds4000">6752</span> rencontres</p>
-                        <p>Reset Charme Chroma: <span class="oddsCC6G">6752</span> rencontres</p>
-                        <p>Masuda full odds : <span class="masuda">6752</span> rencontres</p>
-                        <p>Masuda Charme Chroma: <span class="masudaCC">6752</span> rencontres</p>
-                        <p>Horde full odds : <span class="horde">6752</span> rencontres</p>
-                        <p>Horde Charme Chroma: <span class="hordeCC">6752</span> rencontres</p>
-                        <p>Pêche full odds : <span class="peche">6752</span> rencontres</p>
-                        <p>Pêche Charme Chroma: <span class="pecheCC">6752</span> rencontres</p>
-                        <p>Navi-dex : <span class="navidex">512</span> rencontres</p>
-                        <p>Safari des amis : <span class="safari">6752</span> rencontres</p>
+                    <div class = "col-lg-5">
+                        <span class = "ratioGeneration">4éme Génération :</span>
+                        <p>Random full odds : <span class = "odds8000">4000</span> rencontres</p>
+                        <p>Reset: <span class = "odds8000">6752</span> rencontres</p>
+                        <p>Masuda : <span class = "masudaDP">2000</span> rencontres</p>
                     </div>
                 </div>
-                <div class="row ratioStats">
-                    <div class="col-lg-offset-1 col-lg-6">
-                        <span class="ratioGeneration">7éme Génération :</span>
-                        <p>Random full odds : <span class="odds4000">6752</span> rencontres</p>
-                        <p>Random Charme Chroma : <span class="oddsCC6G">6752</span> rencontres</p>
-                        <p>Reset full odds : <span class="odds4000">6752</span> rencontres</p>
-                        <p>Reset Charme Chroma: <span class="oddsCC6G">6752</span> rencontres</p>
-                        <p>Masuda full odds : <span class="masuda">6752</span> rencontres</p>
-                        <p>Masuda Charme Chroma: <span class="masudaCC">6752</span> rencontres</p>
-                        <p>SOS full odds : <span class="SOS">2000</span> rencontres</p>
-                        <p>SOS Charme Chroma : <span class="SOS">2000</span> rencontres</p>
+                <div class = "row ratioStats">
+                    <div class = "col-lg-offset-1 col-lg-6">
+                        <span class = "ratioGeneration">5éme Génération :</span>
+                        <p>Random full odds : <span class = "odds8000">4000</span> rencontres</p>
+                        <p>Random Charme Chroma : <span class = "oddsCC">6752</span> rencontres</p>
+                        <p>Reset full odds: <span class = "odds8000">9000</span> rencontres</p>
+                        <p>Reset Charme Chroma : <span class = "oddsCC">6752</span> rencontres</p>
+                        <p>Masuda full odds:<span class = "masudaNB"> 9000</span> rencontres</p>
+                        <p>Masuda Charme Chroma : <span class = "masudaNBCC">6752</span> rencontres</p>
+                    </div>
+                    <div class = "col-lg-5">
+                        <span class = "ratioGeneration">6éme Génération :</span>
+                        <p>Random full odds : <span class = "odds4000">6752</span> rencontres</p>
+                        <p>Random Charme Chroma : <span class = "oddsCC6G">6752</span> rencontres</p>
+                        <p>Reset full odds : <span class = "odds4000">6752</span> rencontres</p>
+                        <p>Reset Charme Chroma: <span class = "oddsCC6G">6752</span> rencontres</p>
+                        <p>Masuda full odds : <span class = "masuda">6752</span> rencontres</p>
+                        <p>Masuda Charme Chroma: <span class = "masudaCC">6752</span> rencontres</p>
+                        <p>Horde full odds : <span class = "horde">6752</span> rencontres</p>
+                        <p>Horde Charme Chroma: <span class = "hordeCC">6752</span> rencontres</p>
+                        <p>Pêche full odds : <span class = "peche">6752</span> rencontres</p>
+                        <p>Pêche Charme Chroma: <span class = "pecheCC">6752</span> rencontres</p>
+                        <p>Navi-dex : <span class = "navidex">512</span> rencontres</p>
+                        <p>Safari des amis : <span class = "safari">6752</span> rencontres</p>
+                    </div>
+                </div>
+                <div class = "row ratioStats">
+                    <div class = "col-lg-offset-1 col-lg-6">
+                        <span class = "ratioGeneration">7éme Génération :</span>
+                        <p>Random full odds : <span class = "odds4000">6752</span> rencontres</p>
+                        <p>Random Charme Chroma : <span class = "oddsCC6G">6752</span> rencontres</p>
+                        <p>Reset full odds : <span class = "odds4000">6752</span> rencontres</p>
+                        <p>Reset Charme Chroma: <span class = "oddsCC6G">6752</span> rencontres</p>
+                        <p>Masuda full odds : <span class = "masuda">6752</span> rencontres</p>
+                        <p>Masuda Charme Chroma: <span class = "masudaCC">6752</span> rencontres</p>
+                        <p>SOS full odds : <span class = "SOS">2000</span> rencontres</p>
+                        <p>SOS Charme Chroma : <span class = "SOS">2000</span> rencontres</p>
                     </div>
                 </div>
             </div>

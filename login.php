@@ -1,15 +1,5 @@
 <?php require_once 'util.php'; ?>
 <?php include 'header.php' ?>
-<?php include 'leftbar.php' ?>
-<div class="hidden-xs hidden-sm topLog" id="lastCaptureHub">
-    <img id="lastCapture" src="/assets/gif/zorua.gif"/>
-    <img id="lastCaptureS" src="/assets/gif/zoruaS.gif"/>
-    <p class="lastCaptureInfos lastCaptureName">Zorua !</p>
-    <p class="lastCaptureInfos">Dérniére capture !</p>
-    <p class="lastCaptureInfos">Version : ROSA</p>
-    <p class="lastCaptureInfos">Méthode : Navi-Dex</p>
-    <p class="lastCaptureInfos">Nombres de rencontres : 732</p>
-</div>
 <div class="container bodyPage" id="loginContainer">
     <div class="row">
         <div class="col-lg-12 text-center">
@@ -33,25 +23,26 @@
     </div>
     <?php
     require_once 'util.php';
-    if (!empty($_POST['pseudoLog']) && !empty($_POST['passwordLog'])) {
+    if (isset($_POST['pseudoLog']) && isset($_POST['passwordLog'])) {
         $pseudo = $_POST['pseudoLog'];
         $password = $_POST['passwordLog'];
         try {
-            foreach ($dbh->query('SELECT * from users') as $row) {
-                if (($row['pseudo'] == $pseudo) && ($row['password'] == $password)) {
-                    echo '<meta http-equiv="refresh" content="0; URL=profil.php">';
-                    $_SESSION['connected'] = 1;
-                } else {
-                    ?>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <?php
-                            echo '<center>Votre mot de passe / pseudo n\'est pas correct</center>';
-                            ?>
-                        </div>
+            $req = $dbh->query('SELECT * FROM users WHERE pseudo = ' . $pseudo . ' ');
+            $row = $req->fetch();
+            if (($row['pseudo'] == $pseudo) && ($row['password'] == $password)) {
+                echo '<meta http-equiv="refresh" content="0; URL=profil.php">';
+                $_SESSION['connected'] = 1;
+                $_SESSION['pseudo'] = $row['pseudo'];
+            } else {
+                ?>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <?php
+                        echo '<center>Votre mot de passe / pseudo n\'est pas correct</center>';
+                        ?>
                     </div>
-                    <?php
-                }
+                </div>
+                <?php
             }
             $dbh = null;
         } catch (PDOException $e) {
