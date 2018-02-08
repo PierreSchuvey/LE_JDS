@@ -1,151 +1,160 @@
 #randomCase{
-  margin-top: 10px;
-  margin-bottom: 70px;
-  z-index: 1000;
+    margin-top: 10px;
+    margin-bottom: 70px;
+    z-index: 1000;
 }
 #ballRandom,#pkmWanted, #shinyWanted{
-  margin-left: 10%;
-  margin-bottom: 10px;
-  width:80%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+    width:80%;
+}
+#pkmWanted, #shinyWanted{
+    display : block;
+    margin : auto;
+    width : 50%;
 }
 #nameWanted{
-  margin-left: 28%;
-  text-decoration: none;
-  color:black;
+    margin-left : 40px;
+    font-size: 50px;
+    color:#A73232;
 }
 #leftBar{
-  width:17%;
-  position:absolute;
+    width:17%;
+    position:absolute;
 }
 #clickS{
-  font-size: 12px;
-  margin-left: 24%;
+    font-size: 12px;
+    margin-left: 24%;
 }
 #reloadRandom{
-  width:14%;
+    width:14%;
 }
 hr{
-  border-style: solid;
-  border-color: black;
+    border-style: solid;
+    border-color: black;
 }
-/*ul{
-  list-style: none;
-  color: :white;
-}*/
+ul{
+    list-style: none;
+}
 .toggleSubMenu > a{
-  text-decoration: none;
-  font-size: 33px;
-  color:#A73232;
+    list-style: none;
+    text-decoration: none;
+    font-size: 33px;
+    color:#A73232;
 }
 .toggleSubMenu > a:hover{
-  text-decoration: none;
-  font-size: 35px;
-  color:#B56A6A;
+    list-style: none;
+    text-decoration: none;
+    font-size: 35px;
+    color:#B56A6A;
 }
 .subLink{
-padding-left:15px;
-color:#B56A6A;
-font-size : 30px;
+    list-style: none;
+    padding-left:15px;
+    color:#B56A6A;
+    font-size : 30px;
 }
 .subLink:hover{
-  color : #15403B;
-  text-decoration: none;
+    list-style: none;
+    color : #15403B;
+    text-decoration: none;
 }
 .subLink:focus{
-  color : #4D6139;
-  text-decoration: none;
-}
-  .navigationAccordeon{
-    padding-left: 20px;
-  }
-@media screen and (min-width:992px) and (max-width:1506px){
-  .navigationAccordeon{
-    padding-left: 10px;
-  }
-  .toggleSubMenu > a{
-    text-decoration: none;
-    font-size: 20px;
-    color:#A73232;
-  }
-  .toggleSubMenu > a:hover{
-    text-decoration: none;
-    font-size: 25px;
-    color:#B56A6A;
-  }
-  .toggleSubMenu > a:focus{
-    text-decoration: none;
-    font-size: 25px;
-    color:#4D6139;
-  }
-  .subLink{
-  color:#B56A6A;
-  font-size : 15px;
-  }
-  .subLink:hover{
-    color : #15403B;
-    text-decoration: none;
-  }
-  .subLink:focus{
+    list-style: none;
     color : #4D6139;
     text-decoration: none;
-  }
-  #nameWanted{
-    margin-left: 20%;
-    text-decoration: none;
-    color:black;
-  }
+}
+.navigationAccordeon{
+    padding-left: 20px;
+}
+@media screen and (min-width:992px) and (max-width:1506px){
+    .navigationAccordeon{
+        padding-left: 10px;
+    }
+    .toggleSubMenu > a{
+        text-decoration: none;
+        font-size: 20px;
+        color:#A73232;
+    }
+    .toggleSubMenu > a:hover{
+        text-decoration: none;
+        font-size: 25px;
+        color:#B56A6A;
+    }
+    .toggleSubMenu > a:focus{
+        text-decoration: none;
+        font-size: 25px;
+        color:#4D6139;
+    }
+    .subLink{
+        color:#B56A6A;
+        font-size : 15px;
+    }
+    .subLink:hover{
+        color : #15403B;
+        text-decoration: none;
+    }
+    .subLink:focus{
+        color : #4D6139;
+        text-decoration: none;
+    }
+    #nameWanted{
+        margin-left: 20%;
+        text-decoration: none;
+        color:black;
+    }
 }
 @media screen and (min-width:768px) and (max-width:992px){
-  .navigationAccordeon{
-    padding-left: 10px;
-  }
-  .toggleSubMenu > a{
-    text-decoration: none;
-    font-size: 14px;
-    color:#A73232;
-  }
-  .toggleSubMenu > a:hover{
-    text-decoration: none;
-    font-size: 14px;
-    color:#B56A6A;
-  }
-  .toggleSubMenu > a:focus{
-    text-decoration: none;
-    font-size: 14px;
-    color:#4D6139;
-  }
-  .subLink{
-  color:#B56A6A;
-  font-size : 10px;
-  }
-  .subLink:hover{
-    color : #15403B;
-    text-decoration: none;
-  }
-  .subLink:focus{
-    color : #4D6139;
-    text-decoration: none;
-  }
-  #nameWanted{
-    margin-left: 0%;
-    text-decoration: none;
-    color:black;
-  }
+    .navigationAccordeon{
+        padding-left: 10px;
+    }
+    .toggleSubMenu > a{
+        text-decoration: none;
+        font-size: 14px;
+        color:#A73232;
+    }
+    .toggleSubMenu > a:hover{
+        text-decoration: none;
+        font-size: 14px;
+        color:#B56A6A;
+    }
+    .toggleSubMenu > a:focus{
+        text-decoration: none;
+        font-size: 14px;
+        color:#4D6139;
+    }
+    .subLink{
+        color:#B56A6A;
+        font-size : 10px;
+    }
+    .subLink:hover{
+        color : #15403B;
+        text-decoration: none;
+    }
+    .subLink:focus{
+        color : #4D6139;
+        text-decoration: none;
+    }
+    #nameWanted{
+        margin-left: 0%;
+        text-decoration: none;
+        color:black;
+    }
 }
 @media screen and (max-width:767px){
-  #leftBar{
-    display:none;
-  }
+    #leftBar{
+        display:none;
+    }
 }
 #lastCaptureHub{
-  float: right;
-  margin-right: 3%;
-  margin-bottom: 10px;
+    float: right;
+    margin-right: 3%;
+    margin-bottom: 10px;
 }
 .lastCaptureInfos{
-  margin-top: 20px;
+    margin-top: 20px;
 }
 .lastCaptureName{
-  font-size: 20px;
-  font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 }

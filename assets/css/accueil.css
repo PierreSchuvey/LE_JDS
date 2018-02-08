@@ -1,3 +1,19 @@
+#inputShasseurs{
+    background: none;
+    border : none;
+    color : #A73232;
+    width: 50%;
+}
+#submitShasseurs{
+    background-image: url(/assets/img/loupepkm.png);
+    background-color: #EFDDDD;
+    width: 50px;
+    height: 50px;
+    border: none;
+}
+.colShasseurs{
+    padding-left: 10%;
+}
 .topLog{
     margin-top:40px;
 }
@@ -64,6 +80,8 @@
 #profilImage{
     box-shadow:0px 5px 10px 1px rgba(0, 0, 0, 0.5);
     border-radius: 50%;
+    width: 300px;
+    height: 100%;
 }
 .bodyPage{
     width: 66.1%;

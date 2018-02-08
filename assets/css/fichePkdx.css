@@ -1,10 +1,44 @@
-.tablFiche{
-  text-align: center;
-  border-style: solid;
+.nextPreviousTable{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 25px;
 }
-.artSpriteFiche{
-  width : 100%;
+#beginShasse{
+    margin-left: 37%;
 }
-table{
-  margin-top: 100px;
+#currentPkm{
+    text-align: center;
+}
+#nextButton{
+    float: left;
+}
+#previousButton{
+    float: right;
+}
+#splashArt{
+    display: block;
+    margin: auto;
+    width:200px;
+}
+.tablo{
+    padding-left: 0px;
+}
+#tableLocal{
+    width:100%;
+}
+td{
+    padding-left : 10px;
+}
+#headTableLocal{
+    text-align : center;
+    font-size : 40px;
+    color: #A73232;
+}
+#bodyTableLocal{
+    width : 20%;
+}
+@media screen and (min-width : 450px) and (max-width : 767px){
+    .tablo{
+        padding-left : 20%;
+    }
 }

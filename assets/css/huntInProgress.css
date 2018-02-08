@@ -1,0 +1,29 @@
+.targetSprite{
+    display : block;
+    margin:auto;
+    position: center center;
+    vertical-align: middle;
+}
+img, span {
+    vertical-align: middle;
+}
+.pokemonOnTarget{
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    text-align: center;
+}
+div.pokemonOnTarget span {
+    display: table-cell;
+    padding: 1.5em;
+    margin: 0.3em;
+    width: 8em;
+    height: 8em;
+}
+.normal{
+    height:125px;
+    background-image:url(/assets/img/backTarget.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 80%;
+}

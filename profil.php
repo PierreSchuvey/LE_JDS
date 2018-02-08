@@ -1,18 +1,13 @@
-<?php require_once 'util.php'; ?>
-<?php include 'header.php' ?>
-<!--<?php include 'leftbar.php' ?>-->
 <?php
-if ($_SESSION['connected'] == 1) {
-    $sesionPseudo = $_SESSION['pseudo'];
-    $req = $dbh->query('SELECT * FROM users WHERE pseudo = \'' . $sesionPseudo . '\'');
-    while ($row = $req->fetch()) {
-        $profilesPicture = $row['profilePicture'];
-        $pseudo = $row['pseudo'];
-        $friendCode = $row['friendCode'];
-        $bioUsers = $row['bioUsers'];
-    }
+include_once 'vues/header.php';
+//include_once 'vues/leftbar.php';
+include_once 'models/dataBase.php';
+include_once 'models/users.php';
+include_once 'controllers/usersInfos.php';
+?>
+<?php
+if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connected'] == 1) {
     ?>
-
     <div class="hidden-xs hidden-sm" id="lastCaptureHub">
         <img id="lastCapture" src="/assets/gif/zorua.gif"/>
         <img id="lastCaptureS" src="/assets/gif/zoruaS.gif"/>
@@ -25,13 +20,13 @@ if ($_SESSION['connected'] == 1) {
     <div class="container bodyPage">
         <div class="row">
             <div class="col-xs-offset-1 col-sm-offset-0 col-sm-1 col-md-offset-3 col-md-5 col-lg-offset-0 col-lg-1">
-                <img id="profilImage" src="<?php echo $profilesPicture; ?>" />
+                <img  id="profilImage" src="media/img/<?= $userConnected->id ?>/<?= $userConnected->profilePicture; ?>" />
             </div>
             <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
-                <p id="welcomeText" class="mainTitle">Bienvenue, <?php echo $pseudo; ?> !</p>
+                <p id="welcomeText" class="mainTitle">Bienvenue, <?= $userConnected->pseudo; ?> !</p>
             </div>
             <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
-                <p id="caProfil">Code Ami : <?php echo $friendCode; ?></p>
+                <p id="caProfil">Code Ami : <?= $userConnected->friendCode; ?></p>
             </div>
             <div id="safariHub">
                 <div class="col-xs-10 col-sm-11 col-md-9 col-lg-10">
@@ -51,7 +46,7 @@ if ($_SESSION['connected'] == 1) {
             <div class="row">
                 <div class="col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
                     <p>A propos de moi : <span id="modifTextarea">Modifier </span></p>
-                    <textarea id="aboutMe" name="aboutMe" rows="10" cols="83" readonly disabled><?php echo utf8_encode($bioUsers); ?></textarea>
+                    <textarea id="aboutMe" name="aboutMe" rows="10" cols="83" readonly disabled><?= utf8_encode($userConnected->bioUsers); ?></textarea>
                 </div>
             </div>
             <div class="row">
@@ -202,4 +197,4 @@ if ($_SESSION['connected'] == 1) {
     <?php
 }
 ?>
-<?php include 'footer.php' ?>
+<?php include 'vues/footer.php' ?>
