@@ -8,7 +8,7 @@ include_once 'controllers/loginUsers.php';
     <div class="row">
         <div class="col-lg-12 text-center">
             <h1>Connexion</h1>
-            <form action="login.php" method="post">
+            <form action="/connexion" method="post">
                 <div class="form-group col-lg-offset-4 col-lg-4 topLog">
                     <label for="exampleInputEmail1">Pseudo</label>
                     <input type="text" class="form-control" name="pseudoLog">
@@ -21,7 +21,7 @@ include_once 'controllers/loginUsers.php';
                 <div class="form-group col-lg-offset-4 col-lg-4">
                     <button type="submit" class="form-control" name="logInSubmit"> Connexion</button>
                     <p class="errorsLoginSub"><?= isset($formError['passwordLog']) ? $formError['passwordLog'] : '' ?><?= isset($formError['pseudoLog']) ? $formError['pseudoLog'] : '' ?></p>
-                    <small>Vous n'êtes pas encore inscrit ? Alors cliquer : <a href = subscribeForm.php alt = "Inscription" id = "subscribe">Ici</a></small>
+                    <small>Vous n'êtes pas encore inscrit ? Alors cliquer : <a href = "/inscription" alt = "Inscription" id = "subscribe">Ici</a></small>
                 </div>
             </form>
         </div>

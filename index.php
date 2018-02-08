@@ -42,7 +42,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
         ?>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="login.php" alt="connexion" id="subscribe">Connexion / Inscription</a>
+                <a href="/connexion" alt="connexion" id="subscribe">Connexion / Inscription</a>
             </div>
         </div>
     </div>

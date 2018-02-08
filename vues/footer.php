@@ -11,20 +11,21 @@
             </div>
             <div div class="col-lg-offset-2 col-lg-2">
                 <p>Rejoignez-nous !</p>
-                <a href="#" class="footerLink"><img src="assets/img/facebook.png" /></a>
-                <a href="#" class="footerLink"><img src="assets/img/twitter.png" /></a>
-                <a href="#" class="footerLink"><img src="assets/img/instagram.png" /></a>
-                <a href="#" class="footerLink"><img src="assets/img/dicord.png" /></a>
+                <a href="#" class="footerLink"><img src="/assets/img/facebook.png" /></a>
+                <a href="#" class="footerLink"><img src="/assets/img/twitter.png" /></a>
+                <a href="#" class="footerLink"><img src="/assets/img/instagram.png" /></a>
+                <a href="#" class="footerLink"><img src="/assets/img/dicord.png" /></a>
             </div>
         </div>
     </div>
 </footer>
-<script src="assets/js/progressbar.js"></script>
-<script src="assets/js/accordeon.js"></script>
-<script src="assets/js/rumbleNav.js"></script>
-<script src="assets/js/randomhunt.js"></script>
-<script src="assets/js/accueil.js"></script>
-<script src="assets/js/ratio.js"></script>
-<script src="assets/js/subscribe.js"></script>
+<script src="/assets/js/progressbar.js"></script>
+<script src="/assets/js/accordeon.js"></script>
+<script src="/assets/js/rumbleNav.js"></script>
+<script src="/assets/js/randomhunt.js"></script>
+<script src="/assets/js/accueil.js"></script>
+<script src="/assets/js/ratio.js"></script>
+<script src="/assets/js/subscribe.js"></script>
+<script src="/assets/ajax/randomAjax.js"></script>
 </body>
 </html>

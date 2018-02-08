@@ -10,7 +10,7 @@ include_once 'controllers/addUserController.php';
         <p class="errorsLoginSub"><?= isset($formError['redirect']) ? $formError['redirect'] : '' ?></p>
         <h2>Inscription</h2>
     </div>
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="/inscription" method="post" enctype="multipart/form-data">
         <div class="col-lg-offset-4 col-lg-4  topLog">
             <label>Pseudo* : </label>
         </div>

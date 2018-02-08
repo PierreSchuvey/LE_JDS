@@ -27,3 +27,12 @@ div.pokemonOnTarget span {
     background-position: center center;
     background-size: auto 80%;
 }
+#counter{
+    font-size : 100px;
+    text-align: center;
+    color: #A73232;
+}
+#beginShasseInput{
+    display: block;
+    margin: auto;
+}

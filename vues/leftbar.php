@@ -1,4 +1,4 @@
-<script src="./assets/ajax/randomAjax.js"></script>
+<script src="/assets/ajax/randomAjax.js"></script>
 <div id="leftBar">
     <div id="randomCase" class="col-lg-12">
         <div id="randomHub">
@@ -7,8 +7,8 @@
         </div>
         <div id="randomFocus">
             <img id="reloadRandom" src="/assets/img/reloadrandom.png"/>
-            <img id="targetPkm" src="">
-            <img id = "targetPkmShiny" src = ""/>
+            <img id="targetPkm" src="d">
+            <img id = "targetPkmShiny" src=""/>
             <a href="" id = "nameWanted"></a>
             <p id = "clickS">Clique pour la forme shiny.</p>
         </div>
@@ -17,7 +17,7 @@
         <ul class = "navigationAccordeon">
             <li class = "toggleSubMenu mainTitle"><span class = "libelNav">1ére Gén.</span>
                 <ul class = "subMenu">
-                    <li><a class = "subLink mainTitle" href = "pokedexGen.php?firstGen=1" title = "Pokedex 1st Gen">Pokedex</a></li>
+                    <li><a class = "subLink mainTitle" href = "/pokedex_Gen_1" title = "Pokedex 1st Gen">Pokedex</a></li>
                     <li><a class = "subLink mainTitle" href = "#" title = "Shasses 1st Gen">Shasses</a></li>
                     <li><a class = "subLink mainTitle" href = "#" title = "LivingDex 1st Gen">LivingDex</a></li>
                 </ul>

@@ -38,7 +38,7 @@ include_once 'controllers/currentPokemon.php';
     <div class ="row">
         <div class="col-lg-12">
             <div class="col-lg-12">
-                <a href="huntInProgress.php?pokemonName=<?= $currentPokemon->nomPkm; ?>" id="beginShasse">Commencer la shasse !</a>
+                <a href="/shasse_en_cours/<?= $currentPokemon->nomPkm; ?>" id="beginShasse">Commencer la shasse !</a>
             </div>
         </div>
     </div>

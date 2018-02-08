@@ -40,9 +40,10 @@ if (isset($_POST['logInSubmit'])) {
                 $formError['passwordLog'] = 'Identifiant incorrect';
             } else {
                 $_SESSION['id'] = $login->id;
+                $_SESSION['pseudo'] = $login->pseudo;
                 $_SESSION['connected'] = 1;
                 ?>
-                <meta http-equiv="refresh" content="0.1;URL=profil.php">
+                <meta http-equiv="refresh" content="0.1;URL=/mon_profil/<?= $_SESSION['pseudo'] ?>">
                 <?php
             }
         } else {

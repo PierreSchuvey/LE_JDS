@@ -18,21 +18,18 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
     <div class = "container bodyPage">
         <?php foreach ($otherUsersList as $allOtherUsers) { ?>
             <div class="col-lg-6 colShasseurs">
-                <form action="shasseursProfile.php" method="POST">
-                    <input type="text" id="inputShasseurs"  name="otherUser" readonly value ="<?= $allOtherUsers->pseudo; ?>">
-                    <span>100%</span>
-                    <button id="submitShasseurs" type="submit"></button>
-                </form>
+                <span><?= $allOtherUsers->pseudo; ?></span>
+                <span>100%</span>
+                <a href="visite_du_profil/<?= $allOtherUsers->pseudo; ?>" type="submit"><img src="/assets/img/loupepkm.png"></a>
             </div>
         <?php } ?>
-
     </div>
 <?php } else {
     ?>
     <center><p>Veuillez vous inscrire ou vous connecter pour voir le profil des autres utilisateurs.</p></center>
     <div class="row">
         <div class="col-lg-12 text-center">
-            <a href="login.php" alt="connexion" id="subscribe">Connexion / Inscription</a>
+            <a href="/connexion" alt="connexion" id="subscribe">Connexion / Inscription</a>
         </div>
     </div>
 <?php }
