@@ -18,8 +18,19 @@ class versions extends dataBase {
         return $firstGeneration;
     }
 
+    public function getAllVersions() {
+        $query = 'SELECT version FROM versions';
+        $responseRequest = $this->db->query($query);
+        if (is_object($responseRequest)) {
+            $allVersion = $responseRequest->fetchAll(PDO::FETCH_OBJ);
+        }
+        return $allVersion;
+    }
+
     public function __destruct() {
 
     }
 
 }
+
+?>

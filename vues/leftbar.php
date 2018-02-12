@@ -1,4 +1,3 @@
-<script src="/assets/ajax/randomAjax.js"></script>
 <div id="leftBar">
     <div id="randomCase" class="col-lg-12">
         <div id="randomHub">

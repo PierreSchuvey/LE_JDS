@@ -2,15 +2,15 @@
 
 $currentPokemon = new pokemons();
 $currentPokemon->nomPkm = $_GET['pokemonName'];
-$currentPokemon = $currentPokemon->currentPokemon();
-$currentName = $currentPokemon->nomPkm;
-$previousPkm = $currentPokemon->id - 1;
-$nextPkm = $currentPokemon->id + 1;
-$lastPokemon = new pokemons();
-$lastPokemon = $lastPokemon->lastPokemon();
-$lastPokemon = $lastPokemon->nomPkm;
-$firstPokemon = new pokemons();
-$firstPokemon = $firstPokemon->firstPokemon();
-$firstPokemon = $firstPokemon->nomPkm;
+$selectedPokemon = $currentPokemon->currentPokemon();
+$currentName = $selectedPokemon->nomPkm;
+$previousPkm = $selectedPokemon->id - 1;
+$nextPkm = $selectedPokemon->id + 1;
+$lastPokemon = $currentPokemon->lastPokemon();
+$lastPokemon = $currentPokemon->nomPkm;
+$firstPokemon = $currentPokemon->firstPokemon();
+$firstPokemon = $currentPokemon->nomPkm;
+$allVersion = new versions();
+$allVersion = $allVersion->getAllVersions();
 ?>
 

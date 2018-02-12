@@ -1,9 +1,9 @@
 <?php
 
-if ($currentPokemon->id <= 1) {
-    echo $currentPokemon->id + 150;
+if ($selectedPokemon->id <= 1) {
+    echo $selectedPokemon->id + 150;
 } else {
-    echo $currentPokemon->id - 1;
+    echo $selectedPokemon->id - 1;
 }
 ?>
 

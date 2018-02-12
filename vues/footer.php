@@ -26,6 +26,5 @@
 <script src="/assets/js/accueil.js"></script>
 <script src="/assets/js/ratio.js"></script>
 <script src="/assets/js/subscribe.js"></script>
-<script src="/assets/ajax/randomAjax.js"></script>
 </body>
 </html>

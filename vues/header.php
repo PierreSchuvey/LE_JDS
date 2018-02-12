@@ -17,7 +17,6 @@
         <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
         <script type="text/javascript" src="/assets/js/jquery-3.2.1.js"></script>
         <script type="text/javascript" src="/assets/js/jquery.jrumble.1.3.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
     </head>
     <body>
         <link rel="icon" type="image/png" href="../assets/img/icobar.png" />

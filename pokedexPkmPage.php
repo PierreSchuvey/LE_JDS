@@ -3,9 +3,10 @@ include_once 'vues/header.php';
 include_once 'vues/leftbar.php';
 include_once 'models/dataBase.php';
 include_once 'models/pokemons.php';
+include_once 'models/versions.php';
 include_once 'controllers/currentPokemon.php';
 ?>
-<script src="../assets/ajax/versionsGenerationsLocal.js"></script>
+<script src="/../assets/js/versionsGenerationsLocal.js"></script>
 <div class="container">
     <div class ="row">
         <div class="col-xs-9 col-sm-offset-2 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-6 tablo">
@@ -24,21 +25,21 @@ include_once 'controllers/currentPokemon.php';
     <div class ="row">
         <div class="hidden-sm hidden-md hidden-lg">
             <div class="col-xs-12   col-sm-offset-5 col-md-offset-5 col-lg-offset-6">
-                <p id="currentPkm"><?= $currentPokemon->nomPkm; ?></p>
+                <p id="currentPkm"><?= $selectedPokemon->nomPkm; ?></p>
             </div>
         </div>
     </div>
     <div class ="row">
         <div class="col-lg-12">
             <div class="col-lg-12">
-                <img src="../assets/splashart/<?= $currentPokemon->id ?>.png" id="splashArt">
+                <img src="../assets/splashart/<?= $selectedPokemon->id ?>.png" id="splashArt">
             </div>
         </div>
     </div>
     <div class ="row">
         <div class="col-lg-12">
             <div class="col-lg-12">
-                <a href="/shasse_en_cours/<?= $currentPokemon->nomPkm; ?>" id="beginShasse">Commencer la shasse !</a>
+                <a href="/shasse_en_cours/<?= $selectedPokemon->nomPkm; ?>" id="beginShasse">Commencer la shasse !</a>
             </div>
         </div>
     </div>

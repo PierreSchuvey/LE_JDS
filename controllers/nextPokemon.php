@@ -4,7 +4,7 @@ $nextPokemon = new pokemons();
 $nextPokemon->id = $nextPkm;
 $nextPokemon = $nextPokemon->nextPokemon();
 
-if ($currentPokemon->id >= 151) {
+if ($selectedPokemon->id >= 151) {
 
 } else {
     $nextPokemon = $nextPokemon->nomPkm;
