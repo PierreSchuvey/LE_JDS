@@ -4,6 +4,10 @@
     color : #A73232;
     width: 50%;
 }
+#selectedType{
+    display: block;
+    margin: auto;
+}
 #submitShasseurs{
     background-image: url(/assets/img/loupepkm.png);
     background-color: #EFDDDD;

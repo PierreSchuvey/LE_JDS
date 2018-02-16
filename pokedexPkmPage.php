@@ -11,14 +11,14 @@ include_once 'controllers/currentPokemon.php';
     <div class ="row">
         <div class="col-xs-9 col-sm-offset-2 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-6 tablo">
             <table class="nextPreviousTable">
-                <td class="nextPreviousTable" class="col-lg-3"><a href="<?php include 'controllers/previousPokemon.php'; ?>" id="previousButton" ><<</a></td>
+                <td class="nextPreviousTable" class="col-lg-3"><a href="<?= $selectedPokemon->id <= 1 ? $lastPokemon : $previousPokemon; ?>" id="previousButton" ><<</a></td>
                 <td class="col-lg-2">
-                <center><p>#<?php include 'controllers/previousSpriteAndNumber.php'; ?></p></center>
-                <img src="../assets/minSprite/<?php include 'controllers/previousSpriteAndNumber.php'; ?>.png" width='80px'></td>
+                <center><p>#<?= $selectedPokemon->id <= 1 ? $selectedPokemon->id + 150 : $selectedPokemon->id - 1; ?></p></center>
+                <img src="../assets/minSprite/<?= $selectedPokemon->id <= 1 ? $selectedPokemon->id + 150 : $selectedPokemon->id - 1; ?>.png" width='80px'></td>
                 <td class="hidden-xs col-lg-4"><center><p><?= $currentName; ?></p></center></td>
-                <td class="col-lg-2"><center><p>#<?php include 'controllers/nextSpriteAndNumber.php'; ?></p></center>
-                <img src="../assets/minSprite/<?php include 'controllers/nextSpriteAndNumber.php'; ?>.png" width='80px'></td>
-                <td class="col-lg-2"><a href="<?php include 'controllers/nextPokemon.php'; ?>" id="nextButton">>></a></td>
+                <td class="col-lg-2"><center><p>#<?= $selectedPokemon->id >= 151 ? $selectedPokemon->id - 150 : $selectedPokemon->id + 1; ?></p></center>
+                <img src="../assets/minSprite/<?= $selectedPokemon->id >= 151 ? $selectedPokemon->id - 150 : $selectedPokemon->id + 1; ?>.png" width='80px'></td>
+                <td class="col-lg-2"><a href="<?= $selectedPokemon->id >= 151 ? $firstPokemon : $nextPokemon; ?>" id="nextButton">>></a></td>
             </table>
         </div>
     </div>
@@ -39,13 +39,13 @@ include_once 'controllers/currentPokemon.php';
     <div class ="row">
         <div class="col-lg-12">
             <div class="col-lg-12">
-                <a href="/shasse_en_cours/<?= $selectedPokemon->nomPkm; ?>" id="beginShasse">Commencer la shasse !</a>
+                <a href="/shasse_en_cours/<?= $selectedPokemon->nomPkm; ?>" id="beginShasse" class="linkPagePkm">Commencer la shasse !</a>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-offset-5">
-            <small><a href="http://www.pokepedia.fr/<?= $currentName; ?>">Fiche Poképedia</a></small>
+            <small><a href="http://www.pokepedia.fr/<?= $currentName; ?>" class="linkPagePkm">Fiche Poképedia</a></small>
         </div>
     </div>
     <div class="row">
@@ -54,13 +54,13 @@ include_once 'controllers/currentPokemon.php';
         </div>
         <p id="numberGneration"></p>
         <div class="col-lg-5">
-            <small><a href="#" id="Gen1">1</a></small>
-            <small><a href="#" id="Gen2">2</a></small>
-            <small><a href="#" id="Gen3">3</a></small>
-            <small><a href="#" id="Gen4">4</a></small>
-            <small><a href="#" id="Gen5">5</a></small>
-            <small><a href="#" id="Gen6">6</a></small>
-            <small><a href="#" id="Gen7">7</a></small>
+            <small><a href="#" nbGen="1" class="linkPagePkm">1</a></small>
+            <small><a href="#" nbGen="2" class="linkPagePkm">2</a></small>
+            <small><a href="#" nbGen="3" class="linkPagePkm">3</a></small>
+            <small><a href="#" nbGen="4" class="linkPagePkm">4</a></small>
+            <small><a href="#" nbGen="5" class="linkPagePkm">5</a></small>
+            <small><a href="#" nbGen="6" class="linkPagePkm">6</a></small>
+            <small><a href="#" nbGen="7" class="linkPagePkm">7</a></small>
         </div>
     </div>
     <div>

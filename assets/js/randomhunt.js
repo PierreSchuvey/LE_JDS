@@ -22,7 +22,7 @@ $(document).ready(function() {
                 function(idPkm) {
                     $('#targetPkm').attr("src", "/assets/classicGif/" + idPkm + ".png");
                     $('#targetPkmShiny').attr("src", "/assets/shinyGif/" + idPkm + ".png");
-                    $('#nameWanted').attr("href", "" + idPkm + "");
+                    $('#nameWanted').attr("href", "/localisations/" + idPkm);
                     $('#nameWanted').html(idPkm);
                 },
                 'text'
@@ -34,7 +34,7 @@ $(document).ready(function() {
                 function(idPkm) {
                     $('#targetPkm').attr("src", "/assets/classicGif/" + idPkm + ".png");
                     $('#targetPkmShiny').attr("src", "/assets/shinyGif/" + idPkm + ".png");
-                    $('#nameWanted').attr("href", "" + idPkm + "");
+                    $('#nameWanted').attr("href", "/localisations/" + idPkm);
                     $('#nameWanted').html(idPkm);
                 },
                 'text'

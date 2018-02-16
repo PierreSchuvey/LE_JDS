@@ -4,8 +4,14 @@ include_once 'vues/leftbar.php';
 include_once 'models/dataBase.php';
 include_once 'models/pokemons.php';
 include_once 'models/versions.php';
-include_once 'models/huntMethods.php';
+include_once 'models/methodes.php';
 include_once 'controllers/currentPokemon.php';
+?>
+<script src="/../assets/js/methodShasse.js"></script>
+<?php
+if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connected'] != 1) {
+    ?><center><p  class="errorsLoginSub">ATTENTION ! Vous n'êtes pas connecté votre capture ne serra pas enregistrée ! <a href="/connexion">Connexion/Inscription</a></p></center><?php
+}
 ?>
 <div class="container">
     <div class="row">
@@ -26,24 +32,24 @@ include_once 'controllers/currentPokemon.php';
             <div class="form-group col-lg-offset-1 col-lg-3">
                 <p><label>Version : </label></p>
                 <select name="versionSelected"  id="versionSelected">
+                    <option>Sélectionnez la version</option>
                     <?php
                     foreach ($allVersion as $allVersion) {
-                        ?><option selected="selected"><?= $allVersion->version ?></option><?php
+                        ?><option><?= $allVersion->version ?></option><?php
                     }
                     ?>
                 </select>
             </div>
             <div class="form-group col-lg-offset-1 col-lg-3">
                 <p><label>Methode : </label></p>
-                <select name="methodSelected">
-                    <option  id="methodSelected"></option>
+                <select name="methodSelected" id="allMethodsByVersion">
+                    <option>Sélectionnez la version</option>
                 </select>
             </div>
             <div class="form-group col-lg-offset-1 col-lg-3">
                 <label>Charme Chroma : </label>
                 <input type="checkbox">
             </div>
-            <input type="submit" id ="lolilol">
         </div>
     </form>
     <div class="row">

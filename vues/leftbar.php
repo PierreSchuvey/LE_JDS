@@ -6,7 +6,7 @@
         </div>
         <div id="randomFocus">
             <img id="reloadRandom" src="/assets/img/reloadrandom.png"/>
-            <img id="targetPkm" src="d">
+            <img id="targetPkm" src="">
             <img id = "targetPkmShiny" src=""/>
             <a href="" id = "nameWanted"></a>
             <p id = "clickS">Clique pour la forme shiny.</p>

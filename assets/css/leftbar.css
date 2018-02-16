@@ -8,10 +8,9 @@
     margin-bottom: 10px;
     width:80%;
 }
-#pkmWanted, #shinyWanted{
+#targetPkm, #targetPkmShiny{
     display : block;
     margin : auto;
-    width : 50%;
 }
 #nameWanted{
     margin-left : 40px;

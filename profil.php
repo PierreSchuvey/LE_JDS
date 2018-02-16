@@ -3,6 +3,7 @@ include_once 'vues/header.php';
 include_once 'vues/leftbar.php';
 include_once 'models/dataBase.php';
 include_once 'models/users.php';
+include_once 'models/safaryFriend.php';
 include_once 'controllers/usersInfos.php';
 ?>
 <?php
@@ -25,21 +26,37 @@ if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connec
             <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
                 <p id="welcomeText" class="mainTitle">Bienvenue, <?= $userConnected->pseudo; ?> !</p>
             </div>
+
+
             <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
                 <p id="caProfil">Code Ami : <?= $userConnected->friendCode; ?></p>
             </div>
-            <div id="safariHub">
-                <div class="col-xs-10 col-sm-11 col-md-9 col-lg-10">
-                    <p id="friendPark" >Safari Ami  <img id="typePark" src="/assets/img/feu.png"/></p>
+            <?php
+            if ($safaryFiend) {
+                ?>
+                <div id = "safariHub">
+                    <div class = "col-xs-10 col-sm-11 col-md-9 col-lg-10">
+                        <p id = "friendPark" >Safari Ami <img id = "typePark" src = "/assets/spriteSafari/<?= $safaryFiend->type ?>.png"/></p>
+                    </div>
+                    <div class = "col-xs-offset-2 col-xs-10 col-sm-offset-0 col-sm-10 col-md-offset-0 col-md-9 col-lg-offset-0 col-lg-10">
+                        <span id = "pkmPark">
+                            <img src = "/assets/spriteSafari/<?= $safaryFiend->firstPokemon ?>.png"/>
+                            <img src = "/assets/spriteSafari/<?= $safaryFiend->secondPokemon ?>.png"/>
+                            <img src = "/assets/spriteSafari/<?= $safaryFiend->thirdPokemon ?>.png"/>
+                        </span>
+                    </div>
                 </div>
-                <div class="col-xs-offset-2 col-xs-10 col-sm-offset-0 col-sm-10 col-md-offset-0 col-md-9 col-lg-offset-0 col-lg-10">
-                    <span id="pkmPark">
-                        <img src="/assets/gif/caninos.gif"/>
-                        <img src="/assets/gif/nemelios.gif"/>
-                        <img src="/assets/gif/feunard.gif"/>
-                    </span>
+                <?php
+            } else {
+                ?>
+                <div id = "safariHub">
+                    <div class = "col-xs-10 col-sm-11 col-md-9 col-lg-offset-5">
+                        <a href="/ajout_du_parc">Ajout du parc Safari</a>
+                    </div>
                 </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
         <div id="infoHub">
             <hr /><hr />

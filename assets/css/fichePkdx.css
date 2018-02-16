@@ -3,6 +3,9 @@
     margin-bottom: 50px;
     margin-left: 25px;
 }
+.linkPagePkm, .linkPagePkm:visited, .linkPagePkm:hover{
+    color : #A73232;
+}
 #beginShasse{
     margin-left: 37%;
 }

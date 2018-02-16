@@ -8,7 +8,7 @@ include_once 'controllers/addUserController.php';
     <div class="col-lg-12 text-center">
         <p class="errorsLoginSub"><?= isset($formError['add']) ? $formError['add'] : '' ?></p>
         <p class="errorsLoginSub"><?= isset($formError['redirect']) ? $formError['redirect'] : '' ?></p>
-        <h2>Inscription</h2>
+        <h1>Inscription</h1>
     </div>
     <form action="/inscription" method="post" enctype="multipart/form-data">
         <div class="col-lg-offset-4 col-lg-4  topLog">

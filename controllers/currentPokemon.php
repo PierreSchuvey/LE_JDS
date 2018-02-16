@@ -7,9 +7,24 @@ $currentName = $selectedPokemon->nomPkm;
 $previousPkm = $selectedPokemon->id - 1;
 $nextPkm = $selectedPokemon->id + 1;
 $lastPokemon = $currentPokemon->lastPokemon();
-$lastPokemon = $currentPokemon->nomPkm;
+$lastPokemon = $lastPokemon->nomPkm;
 $firstPokemon = $currentPokemon->firstPokemon();
-$firstPokemon = $currentPokemon->nomPkm;
+$firstPokemon = $firstPokemon->nomPkm;
+
+$currentPokemon->id = $nextPkm;
+$nextPokemon = $currentPokemon->nextPokemon();
+if ($selectedPokemon->id >= 151) {
+
+} else {
+    $nextPokemon = $nextPokemon->nomPkm;
+}
+$currentPokemon->id = $previousPkm;
+$previousPokemon = $currentPokemon->previousPokemon();
+if ($selectedPokemon->id <= 1) {
+
+} else {
+    $previousPokemon = $previousPokemon->nomPkm;
+}
 $allVersion = new versions();
 $allVersion = $allVersion->getAllVersions();
 ?>
