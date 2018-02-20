@@ -1,0 +1,23 @@
+#si le module est chargé alors tu m'executes ce qu'il s'y trouve
+<IfModule mod_rewrite.c>
+    #On utilise le module +FollowSymlinks, présent sur le serveur.
+    Options +FollowSymlinks
+    #Active ou désactive le réécriture (on -> active la réécriture)
+    RewriteEngine On
+    #Réécriture de l'url par une regex
+    #([a-z]+) = page=$1 parce qu'il est placé en premier
+    #? = $1 n'est pas obligatoire
+    #([0-9]+) = page=$2
+RewriteRule connexion /login.php [L]
+RewriteRule inscription /subscribeForm.php [L]
+RewriteRule mon_profil/([A-Za-z]+([0-9]{2})?)?$ /profil.php [L]
+RewriteRule ajout_du_parc /addSafary.php [L]
+RewriteRule liste_des_shasseurs /shasseurs.php [L]
+RewriteRule pokedex_complet /pokedexAllGen.php [L]
+RewriteRule pokedex_Gen_([0-9]) /pokedexGen.php?nbGen=$1 [L]
+RewriteRule localisations/([0-9]+)?([A-Z][a-z]+[A-Z]?)$ /pokedexPkmPage.php/?nbPkm=$1&pokemonName=$2 [L]
+RewriteRule visite_du_profil/([A-Za-z]+([0-9]{2})?)?$ /shasseursProfile.php?nameShasseur=$1 [L]
+RewriteRule shasse_en_cours/([0-9]+)?([A-Za-z]+[A-Z]?)_?([A-Za-z]+[\sA-Za-z]+?)?_?([A-Za-z]+[\sA-Za-z]+?)?_?([0-9]+)?$ /huntInProgress.php/?nbPkm=$1&pokemonName=$2&version=$3&method=$4&nbEncounter=$5 [L]
+RewriteRule shasses_non_accomplies /savedHunts.php [L]
+
+</IfModule>
