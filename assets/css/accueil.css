@@ -1,3 +1,16 @@
+bodyPage{
+    min-height:  900px;
+}
+header{
+}
+.spritePokemonSafary{
+    margin-top: 10px;
+}
+#errorAndValidAddSafary{
+    color:red;
+    font-size: 30px;
+    text-align: center;
+}
 #inputShasseurs{
     background: none;
     border : none;
@@ -17,9 +30,6 @@
 }
 .colShasseurs{
     padding-left: 10%;
-}
-.topLog{
-    margin-top:40px;
 }
 .introInfos{
     font-size: 30px;
@@ -88,11 +98,9 @@
     height: 100%;
 }
 .bodyPage{
-    width: 66.1%;
     background-color: rgba(215,163,163,0.1);
     min-height: 700px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 #caProfil{
     font-size : 15px;

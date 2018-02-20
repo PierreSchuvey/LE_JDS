@@ -17,7 +17,7 @@
             <li class = "toggleSubMenu mainTitle"><span class = "libelNav">1ére Gén.</span>
                 <ul class = "subMenu">
                     <li><a class = "subLink mainTitle" href = "/pokedex_Gen_1" title = "Pokedex 1st Gen">Pokedex</a></li>
-                    <li><a class = "subLink mainTitle" href = "#" title = "Shasses 1st Gen">Shasses</a></li>
+                    <li><a class = "subLink mainTitle" href = "/shasses_non_accomplies" title = "Shasses 1st Gen">Shasses</a></li>
                     <li><a class = "subLink mainTitle" href = "#" title = "LivingDex 1st Gen">LivingDex</a></li>
                 </ul>
             </li>

@@ -26,13 +26,28 @@ div.pokemonOnTarget span {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: auto 80%;
+    display: block;
+    margin : auto;
 }
 #counter{
     font-size : 100px;
     text-align: center;
     color: #A73232;
+    background-color: #F2E3E3;
+    border: none;
+    width:50%;
+    display: block;
+    margin : auto;
 }
 #beginShasseInput{
     display: block;
     margin: auto;
+}
+#savedShasse tr th{
+    border-style:solid;
+    text-align:center;
+}
+#savedShasse tr td{
+    border-style:solid;
+    text-align:center;
 }

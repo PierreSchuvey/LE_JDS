@@ -1,6 +1,6 @@
-var basicEncounter = 1;
+var basicEncounter = $('#counter').val();
 $(document).keyup(function() {
-    $('#counter').html(basicEncounter++);
+    $('#counter').val(basicEncounter++);
 });
 
 $('#targetPkmShinyInProgress').css('display', 'none');

@@ -3,6 +3,8 @@ include_once 'vues/header.php';
 include_once 'vues/leftbar.php';
 include_once 'models/dataBase.php';
 include_once 'models/pokemons.php';
+include_once 'models/hunts.php';
+include_once 'vues/lastCapture.php';
 ?>
 <div class="container bodyPage">
     <div class="col-xs-offset-2">

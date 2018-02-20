@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_POST['allPokemonsByType'])) {
     include_once '../models/dataBase.php';
     include_once '../models/safaryFriend.php';
@@ -19,6 +18,26 @@ if (isset($_POST['allPokemonsByType'])) {
 } else {
     $allAboutSafary = new safaryFriend();
     $safaryType = $allAboutSafary->getAllSafaryType();
+}
+
+if (isset($_POST['ajoutSafary'])) {
+    $error = array();
+    if (isset($_POST['firstPokemon']) && isset($_POST ['secondPokemon']) && isset($_SESSION['id'])) {
+        $allAboutSafary->type = $_POST['type'];
+        $allAboutSafary->firstPokemon = $_POST['firstPokemon'];
+        $allAboutSafary->secondPokemon = $_POST['secondPokemon'];
+        $allAboutSafary->thirdPokemon = $_POST['thirdPokemon'];
+        $allAboutSafary->idUser = $_SESSION['id'];
+        $allAboutSafary->addSafaryUser();
+        $error['ValidAddSafary'] = 'Votre parc à bien été ajouté, vous allez êtres redirigé vers votre profil !';
+        if (isset($error['ValidAddSafary'])) {
+            ?>
+            <meta http-equiv="refresh" content="1;URL=/mon_profil/<?= $_SESSION['pseudo'] ?>">
+            <?php
+        }
+    } else {
+        $error['echecAddSafary'] = 'Erreur dans l\'ajout de votre safari amis';
+    }
 }
 ?>
 

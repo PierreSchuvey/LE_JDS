@@ -44,6 +44,3 @@ $(function() {
         });
     });
 });
-/*$('#firstPokemon').append('<option>' + pkmList.pkmList + '</option>');
- $('#secondPokemon').append('<option>' + pkmList.pokemon + '</option>');
- $('#thirdPokemon').append('<option>' + pkmList.pokemon + '</option>');*/

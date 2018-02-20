@@ -1,10 +1,12 @@
 <?php
 include_once 'vues/header.php';
 include_once 'vues/leftbar.php';
-include_once 'vues/lastCapture.php';
 include_once 'models/dataBase.php';
 include_once 'models/users.php';
+include_once 'models/safaryFriend.php';
+include_once 'models/hunts.php';
 include_once 'controllers/otherUsersProfil.php';
+include_once 'vues/lastCapture.php';
 ?>
 <div class="container bodyPage">
     <div class="row">
@@ -17,18 +19,32 @@ include_once 'controllers/otherUsersProfil.php';
         <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
             <p id="caProfil">Code Ami : <?= $otherUsersProfil->friendCode; ?> </p>
         </div>
-        <div id="safariHub">
-            <div class="col-xs-10 col-sm-11 col-md-9 col-lg-10">
-                <p id="friendPark" >Safari Ami  <img id="typePark" src="/assets/img/feu.png"/></p>
+        <?php
+        if ($safaryFiend) {
+            ?>
+            <div id = "safariHub">
+                <div class = "col-xs-10 col-sm-11 col-md-9 col-lg-10">
+                    <p id = "friendPark" >Safari Ami <img id = "typePark" src = "/assets/spriteSafari/<?= $safaryFiend->type ?>.png"/></p>
+                </div>
+                <div class = "col-xs-offset-2 col-xs-10 col-sm-offset-0 col-sm-10 col-md-offset-0 col-md-9 col-lg-offset-0 col-lg-10">
+                    <span id = "pkmPark">
+                        <img src = "/assets/spriteSafari/<?= $safaryFiend->firstPokemon ?>.png"/>
+                        <img src = "/assets/spriteSafari/<?= $safaryFiend->secondPokemon ?>.png"/>
+                        <img src = "/assets/spriteSafari/<?= $safaryFiend->thirdPokemon ?>.png"/>
+                    </span>
+                </div>
             </div>
-            <div class="col-xs-offset-2 col-xs-10 col-sm-offset-0 col-sm-10 col-md-offset-0 col-md-9 col-lg-offset-0 col-lg-10">
-                <span id="pkmPark">
-                    <img src="/assets/gif/caninos.gif"/>
-                    <img src="/assets/gif/nemelios.gif"/>
-                    <img src="/assets/gif/feunard.gif"/>
-                </span>
+            <?php
+        } else {
+            ?>
+            <div id = "safariHub">
+                <div class = "col-xs-10 col-sm-11 col-md-9 col-lg-offset-5">
+                    <p>Cet utilisateur ne pocéde pas de safari amis</p>
+                </div>
             </div>
-        </div>
+            <?php
+        }
+        ?>
     </div>
     <div id="infoHub">
         <hr /><hr />

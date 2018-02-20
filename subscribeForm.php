@@ -66,3 +66,5 @@ include_once 'controllers/addUserController.php';
         </div>
     </form>
 </div>
+
+<?php include_once 'vues/footer.php'; ?>

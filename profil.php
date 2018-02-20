@@ -4,21 +4,14 @@ include_once 'vues/leftbar.php';
 include_once 'models/dataBase.php';
 include_once 'models/users.php';
 include_once 'models/safaryFriend.php';
+include_once 'models/hunts.php';
 include_once 'controllers/usersInfos.php';
 ?>
 <?php
 if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connected'] == 1) {
+    include_once 'vues/lastCapture.php';
     ?>
-    <div class="hidden-xs hidden-sm" id="lastCaptureHub">
-        <img id="lastCapture" src="/assets/gif/zorua.gif"/>
-        <img id="lastCaptureS" src="/assets/gif/zoruaS.gif"/>
-        <p class="lastCaptureInfos lastCaptureName">Zorua !</p>
-        <p class="lastCaptureInfos">Dérniére capture !</p>
-        <p class="lastCaptureInfos">Version : ROSA</p>
-        <p class="lastCaptureInfos">Méthode : Navi-Dex</p>
-        <p class="lastCaptureInfos">Nombres de rencontres : 732</p>
-    </div>
-    <div class="container bodyPage">
+    <div class="container  bodyPage">
         <div class="row">
             <div class="col-xs-offset-1 col-sm-offset-0 col-sm-1 col-md-offset-3 col-md-5 col-lg-offset-0 col-lg-1">
                 <img  id="profilImage" src="/media/img/<?= $userConnected->id ?>/<?= $userConnected->profilePicture; ?>" />
@@ -205,10 +198,12 @@ if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connec
     <?php
 } else {
     ?>
-    <center>Pour voir votre profil veuillez vous connectez ou vous inscrire</center>
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <a href="/connexion" alt="connexion" id="subscribe">Connexion / Inscription</a>
+    <div class="container  bodyPage">
+        <center>Pour voir votre profil veuillez vous connectez ou vous inscrire</center>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a href="/connexion" alt="connexion" id="subscribe">Connexion / Inscription</a>
+            </div>
         </div>
     </div>
     <?php

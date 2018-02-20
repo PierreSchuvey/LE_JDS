@@ -1,20 +1,12 @@
 <?php
 include_once 'vues/header.php';
 include_once 'vues/leftbar.php';
+include_once 'models/dataBase.php';
+include_once 'models/hunts.php';
 ?>
 <?php
 if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
-    ?>
-    <div class = "hidden-xs hidden-sm" id = "lastCaptureHub">
-        <img id = "lastCapture" src = "/assets/gif/zorua.gif"/>
-        <img id = "lastCaptureS" src = "/assets/gif/zoruaS.gif"/>
-        <p class = "lastCaptureInfos lastCaptureName">Zorua!</p>
-        <p class = "lastCaptureInfos">Dérniére capture!</p>
-        <p class = "lastCaptureInfos">Version : ROSA</p>
-        <p class = "lastCaptureInfos">Méthode : Navi-Dex</p>
-        <p class = "lastCaptureInfos">Nombres de rencontres : 732</p>
-    </div>
-    <?php
+    include_once 'vues/lastCapture.php';
 }
 ?>
 <div class = "container bodyPage">

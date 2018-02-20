@@ -7,7 +7,7 @@ include_once 'models/versions.php';
 include_once 'controllers/currentPokemon.php';
 ?>
 <script src="/../assets/js/versionsGenerationsLocal.js"></script>
-<div class="container">
+<div class="container bodyPage">
     <div class ="row">
         <div class="col-xs-9 col-sm-offset-2 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-6 tablo">
             <table class="nextPreviousTable">

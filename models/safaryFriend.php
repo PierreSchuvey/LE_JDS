@@ -41,6 +41,28 @@ class safaryFriend extends dataBase {
         }
     }
 
+    public function getSafaryByOtherUser() {
+        $safaryByUser = $this->db->prepare('SELECT `type`, `firstPokemon`, `secondPokemon`, `thirdPokemon`  FROM `safaryFriend` INNER JOIN `users` WHERE `safaryFriend`.`idUser` = `users`.`id` AND `users`.`pseudo` = :pseudo');
+        $safaryByUser->bindValue(':pseudo', $this->pseudo, PDO::PARAM_STR);
+        if ($safaryByUser->execute()) {
+            $safaryByUser = $safaryByUser->fetch(PDO::FETCH_OBJ);
+            return $safaryByUser;
+        }
+    }
+
+    public function addSafaryUser() {
+        //On prépare la requête sql qui insert dans les champs selectionnés, les valeurs sont des marqueurs nominatifs
+        $query = 'INSERT INTO `safaryFriend`(`type`, `firstPokemon`, `secondPokemon`, `thirdPokemon`, `idUser`) VALUES(:type, :firstPokemon, :secondPokemon, :thirdPokemon, :idUser)';
+        $addSafaryUser = $this->db->prepare($query);
+        $addSafaryUser->bindValue(':type', $this->type, PDO::PARAM_STR);
+        $addSafaryUser->bindValue(':firstPokemon', $this->firstPokemon, PDO::PARAM_STR);
+        $addSafaryUser->bindValue(':secondPokemon', $this->secondPokemon, PDO::PARAM_STR);
+        $addSafaryUser->bindValue(':thirdPokemon', $this->thirdPokemon, PDO::PARAM_STR);
+        $addSafaryUser->bindValue(':idUser', $this->idUser, PDO::PARAM_STR);
+        //Si l'insertion s'est correctement déroulée on retourne vrai
+        return $addSafaryUser->execute();
+    }
+
     public function __destruct() {
 
     }

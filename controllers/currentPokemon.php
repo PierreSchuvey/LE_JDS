@@ -1,5 +1,8 @@
 <?php
 
+$allVersion = new versions();
+$allVersion = $allVersion->getAllVersions();
+
 $currentPokemon = new pokemons();
 $currentPokemon->nomPkm = $_GET['pokemonName'];
 $selectedPokemon = $currentPokemon->currentPokemon();
@@ -25,7 +28,5 @@ if ($selectedPokemon->id <= 1) {
 } else {
     $previousPokemon = $previousPokemon->nomPkm;
 }
-$allVersion = new versions();
-$allVersion = $allVersion->getAllVersions();
 ?>
 
