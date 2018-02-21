@@ -63,6 +63,19 @@ class safaryFriend extends dataBase {
         return $addSafaryUser->execute();
     }
 
+    public function updateSafary() {
+        //On prépare la requête sql qui insert dans les champs selectionnés, les valeurs sont des marqueurs nominatifs
+        $query = 'UPDATE safaryFriend SET type = :type, firstPokemon=:firstPokemon, secondPokemon=:secondPokemon, thirdPokemon=:thirdPokemon WHERE idUser = :idUser';
+        $updateSafary = $this->db->prepare($query);
+        $updateSafary->bindValue(':type', $this->type, PDO::PARAM_STR);
+        $updateSafary->bindValue(':firstPokemon', $this->firstPokemon, PDO::PARAM_STR);
+        $updateSafary->bindValue(':secondPokemon', $this->secondPokemon, PDO::PARAM_STR);
+        $updateSafary->bindValue(':thirdPokemon', $this->thirdPokemon, PDO::PARAM_STR);
+        $updateSafary->bindValue(':idUser', $this->idUser, PDO::PARAM_STR);
+        //Si l'insertion s'est correctement déroulée on retourne vrai
+        return $updateSafary->execute();
+    }
+
     public function __destruct() {
 
     }

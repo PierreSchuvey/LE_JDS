@@ -54,7 +54,6 @@ include_once 'controllers/addUserController.php';
         </div>
         <div class="form-group col-lg-offset-4 col-lg-5">
             <label>Photo de profil (jpg, jpeg, png) 1mo max  : </label>
-
         </div>
         <div class="form-group col-lg-offset-4 col-lg-4">
             <input type="file" name="profilePicture"  value="<?= isset($_POST['profilePicture']) ? $_POST['profilPicture'] : '' ?>" >

@@ -14,13 +14,14 @@ if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connec
     <div class="container  bodyPage">
         <div class="row">
             <div class="col-xs-offset-1 col-sm-offset-0 col-sm-1 col-md-offset-3 col-md-5 col-lg-offset-0 col-lg-1">
-                <img  id="profilImage" src="/media/img/<?= $userConnected->id ?>/<?= $userConnected->profilePicture; ?>" />
+                <a href="/modification_avatar"><img  id="profilImage" src="/media/img/<?= $userConnected->id ?>/<?= $userConnected->profilePicture; ?>" /></a>
+            </div>
+            <div class="col-lg-offset-10">
+                <a href="/modification_des_infos_profils">Modifier le profil</a>
             </div>
             <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
                 <p id="welcomeText" class="mainTitle">Bienvenue, <?= $userConnected->pseudo; ?> !</p>
             </div>
-
-
             <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
                 <p id="caProfil">Code Ami : <?= $userConnected->friendCode; ?></p>
             </div>
@@ -37,6 +38,7 @@ if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connec
                             <img src = "/assets/spriteSafari/<?= $safaryFiend->secondPokemon ?>.png"/>
                             <img src = "/assets/spriteSafari/<?= $safaryFiend->thirdPokemon ?>.png"/>
                         </span>
+                        <small><a href="/modification_du_parc">Modifier</a></small>
                     </div>
                 </div>
                 <?php
@@ -55,13 +57,7 @@ if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connec
             <hr /><hr />
             <div class="row">
                 <div class="col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-                    <p>A propos de moi : <span id="modifTextarea">Modifier </span></p>
-                    <textarea id="aboutMe" name="aboutMe" rows="10" cols="83" readonly disabled><?= utf8_encode($userConnected->bioUsers); ?></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-offset-11">
-                    <span id="validModifTextarea">Valider</span>
+                    <textarea id="aboutMe" name="aboutMe" rows="10" cols="83" readonly disabled><?= $userConnected->bioUsers ?></textarea>
                 </div>
             </div>
             <div class="row">
