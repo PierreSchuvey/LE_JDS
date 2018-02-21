@@ -6,7 +6,7 @@ $selectedPokemon = $currentPokemon->currentPokemon();
 $allVersion = new versions();
 $allVersion = $allVersion->getAllVersions();
 
-if ($_SESSION['id'] != 0) {
+if (!empty($_SESSION['id']) && $_SESSION['id'] != 0) {
     $controlHunts = new hunts();
     $controlHunts->idUser = $_SESSION['id'];
     if (isset($_GET['pokemonName'])) {

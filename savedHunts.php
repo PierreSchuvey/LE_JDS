@@ -8,14 +8,14 @@ include_once 'vues/lastCapture.php';
 if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
     ?>
     <div class = "container bodyPage">
-        <table class="col-lg-offset-1 col-lg-10" id="savedShasse">
+        <table class="" id="savedShasse">
             <thead>
                 <tr>
-                    <th>Pokemon</th>
-                    <th>Version</th>
-                    <th>Methode</th>
-                    <th>Nombre de rencontres</th>
-                    <th>Reprendre la shasse</th>
+                    <th class="col-lg-2">Pokemon</th>
+                    <th class="col-lg-2">Version</th>
+                    <th class="col-lg-2">Methode</th>
+                    <th class="col-lg-2">Nombre de rencontres</th>
+                    <th class="col-lg-2">Reprendre la shasse</th>
                 </tr>
             </thead>
             <tbody>

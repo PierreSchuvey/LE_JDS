@@ -1,8 +1,10 @@
 <?php
 
-$controlHunts = new hunts();
+if (!empty($_SESSION['id'])) {
+    $controlHunts = new hunts();
 
-$controlHunts->idUser = $_SESSION['id'];
-$saveHunts = $controlHunts->getSavedHunt();
+    $controlHunts->idUser = $_SESSION['id'];
+    $saveHunts = $controlHunts->getSavedHunt();
+}
 ?>
 

@@ -5,13 +5,13 @@ include_once 'models/dataBase.php';
 include_once 'models/hunts.php';
 ?>
 <?php
-if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
+if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1 && !empty($_SESSION['id'])) {
     include_once 'vues/lastCapture.php';
 }
 ?>
 <div class = "container bodyPage">
-    <div class = "col-xs-offset-1">
-        <h1 id = "welcomeText" class = "mainTitle">Bienvenue sur le journal du Shasseur!</h1>
+    <div>
+        <center><h1 id = "welcomeText" class = "mainTitle">Bienvenue sur le journal du Shasseur!</h1></center>
     </div>
     <div class = "col-lg-12">
         <p class = "introInfos">

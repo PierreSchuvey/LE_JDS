@@ -9,24 +9,34 @@ include_once 'vues/lastCapture.php';
 if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
     ?>
     <div class = "container bodyPage">
-        <?php foreach ($otherUsersList as $allOtherUsers) { ?>
-            <div class="col-lg-6 colShasseurs">
-                <span><?= $allOtherUsers->pseudo; ?></span>
-                <span>100%</span>
-                <a href="visite_du_profil/<?= $allOtherUsers->pseudo; ?>" type="submit"><img src="/assets/img/loupepkm.png"></a>
-            </div>
-        <?php } ?>
+        <table class="col-lg-offset-1 col-lg-10" id="savedShasse">
+            <thead>
+                <tr>
+                    <th class="col-lg-4">Pseudo</th>
+                    <th class="col-lg-4">Avancement</th>
+                    <th class="col-lg-4">Voir le profil</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($otherUsersList as $allOtherUsers) { ?>
+                    <tr>
+                        <td><?= $allOtherUsers->pseudo; ?></td>
+                        <td>100 %</td>
+                        <td><a href="visite_du_profil/<?= $allOtherUsers->pseudo; ?>" type="submit"><img src="/assets/img/loupepkm.png"></a></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
 <?php } else {
     ?>
-    <div class="container  bodyPage">
-        <center><p>Veuillez vous inscrire ou vous connecter pour voir le profil des autres utilisateurs.</p></center>
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <a href="/connexion" alt="connexion" id="subscribe">Connexion / Inscription</a>
-            </div>
+    <center><p>Veuillez vous inscrire ou vous connecter pour voir le profil des autres utilisateurs.</p></center>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <a href="/connexion" alt="connexion" id="subscribe">Connexion / Inscription</a>
         </div>
-    <?php }
-    ?>
+    </div>
+<?php }
+?>
 </div>
 <?php include 'vues/footer.php' ?>

@@ -36,8 +36,7 @@ div.pokemonOnTarget span {
     background-color: #F2E3E3;
     border: none;
     width:50%;
-    display: block;
-    margin : auto;
+    margin-left:28%;
 }
 #beginShasseInput{
     display: block;
