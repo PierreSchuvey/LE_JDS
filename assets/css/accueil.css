@@ -1,3 +1,36 @@
+.caseLivingDex{
+    width: 90px;
+    height: 90px;
+}
+.box{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.boxPkm{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    border: 1px solid #A73232;
+    margin: 0.5px;
+}
+.boxNumber{
+    text-align: center;
+}
+.boxSprite{
+    filter : grayscale(100);
+}
+.boxSpriteCaptured{
+    filter : grayscale(0);
+}
 .inputUpdateProfil{
     width : 35%;
 }

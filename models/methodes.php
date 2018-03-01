@@ -12,8 +12,8 @@ class methodes extends dataBase {
     }
 
     public function getMethodsByVersion() {
-        $allMethods = $this->db->prepare('SELECT methode FROM huntMethods INNER JOIN versions WHERE versions.version = :version AND huntMethods.idVersion = versions.id');
-        $allMethods->bindValue(':version', $this->version, PDO::PARAM_STR);
+        $allMethods = $this->db->prepare('SELECT huntMethods.id, huntMethods.methode FROM huntMethods INNER JOIN versions ON versions.id = huntMethods.idVersion WHERE versions.id = :id');
+        $allMethods->bindValue(':id', $this->id, PDO::PARAM_INT);
         $allMethods->execute();
         $allMethods = $allMethods->fetchAll(PDO::FETCH_OBJ);
         return $allMethods;

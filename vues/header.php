@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <li><a id="lienancre8" class="mainTitle" href="/mon_profil/<?= $_SESSION['pseudo'] ?>" title="intro">Mon profil</a></li>
-                        <li><a id="lienancre9" class="mainTitle" href="#" title="perso">Historique</a></li>
+                        <li><a id="lienancre9" class="mainTitle" href="/historique_de_mes_captures" title="perso">Historique</a></li>
                     </div>
                     <li id="lienancre11"><a href="/pokedex_complet" class="mainTitle" id="subNavTitle" title="pokedex">Pokedex</a></li>
                     <li id="lienancre11"><a href="/shasseurs.php" class="mainTitle" id="subNavTitle" title="experiences">Shasseurs</a></li>
@@ -64,7 +64,7 @@
                                 <a href="/mon_profil/<?= isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : 'Visiteur' ?>" alt="Mon profil" title="accueil" class="libelNav mainTitle" ><img src="../assets/img/gold.png"/> Mon profil</a>
                             </div>
                             <div class="col-sm-5 col-md-5 col-lg-4 colNav">
-                                <a href="#" alt="Mon profil" title="accueil" class="libelNav" ><img src="../assets/img/home.png"/> Mon historique de shasses</a>
+                                <a href="/historique_de_mes_captures" alt="Mon profil" title="accueil" class="libelNav" ><img src="../assets/img/home.png"/> Mon historique de shasses</a>
                             </div>
                             <div class="hidden-sm hidden-md col-lg-3 colNav">
                                 <div class="search">

@@ -9,6 +9,22 @@ class pokemons extends dataBase {
         parent::__construct();
     }
 
+    public function getAllPokemon() {
+        $query = 'SELECT `id`, `nomPkm` FROM `pokemon`';
+        $allPokemon = $this->db->query($query);
+        if (is_object($allPokemon)) {
+            $allPokemon = $allPokemon->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $allPokemon;
+    }
+
+    public function getCatchedPokemonById() {
+        $getCatchedPokemonById = $this->db->prepare('SELECT pokemon.id AS id, hunts.catchStatement AS catchStatement, hunts.idUser AS idUser FROM `pokemon` LEFT JOIN `hunts` ON pokemon.id = hunts.idPokemon ORDER BY pokemon.id ASC');
+        $getCatchedPokemonById->execute();
+        $getCatchedPokemonById = $getCatchedPokemonById->fetchAll(PDO::FETCH_OBJ);
+        return $getCatchedPokemonById;
+    }
+
     public function getOnePokemon() {
         $thePokemon = $this->db->prepare('SELECT `nomPkm` FROM `pokemon` WHERE `id` = :id');
         $thePokemon->bindValue(':id', $this->id, PDO::PARAM_STR);
@@ -50,7 +66,7 @@ class pokemons extends dataBase {
     }
 
     public function lastPokemon() {
-        $lastPokemon = $this->db->prepare('SELECT id, nomPkm FROM `pokemon` WHERE `id` = 151');
+        $lastPokemon = $this->db->prepare('SELECT id, nomPkm FROM `pokemon` WHERE `id` = (SELECT MAX(`id`) FROM `pokemon`)');
         $lastPokemon->bindValue(':id', $this->id, PDO::PARAM_STR);
         $lastPokemon->execute();
         $lastPokemon = $lastPokemon->fetch(PDO::FETCH_OBJ);

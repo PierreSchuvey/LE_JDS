@@ -19,7 +19,7 @@ class versions extends dataBase {
     }
 
     public function getAllVersions() {
-        $query = 'SELECT version FROM versions';
+        $query = 'SELECT id, version FROM versions';
         $responseRequest = $this->db->query($query);
         if (is_object($responseRequest)) {
             $allVersion = $responseRequest->fetchAll(PDO::FETCH_OBJ);

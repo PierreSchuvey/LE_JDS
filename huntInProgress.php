@@ -19,7 +19,7 @@ if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connec
 ?>
 <div class="container bodyPage">
     <div class="col-lg-12">
-        <center><h1 class="mainTitle">Target : <?= $currentPokemon->nomPkm ?> !</h1></center>
+        <center><h1 class="mainTitle">Target : <?= $selectedPokemon->nomPkm ?> !</h1></center>
     </div>
     <div class="col-xs-offset-1 col-lg-offset-5">
         <div class="pokemonOnTarget">

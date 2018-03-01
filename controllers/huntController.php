@@ -8,9 +8,10 @@ $allVersion = $allVersion->getAllVersions();
 
 if (!empty($_SESSION['id']) && $_SESSION['id'] != 0) {
     $controlHunts = new hunts();
+    $currentPokemon->idPokemon = $selectedPokemon->id;
     $controlHunts->idUser = $_SESSION['id'];
     if (isset($_GET['pokemonName'])) {
-        $controlHunts->pokemon = $_GET['pokemonName'];
+        $controlHunts->idPokemon = $selectedPokemon->id;
     }
     $existingHunt = $controlHunts->getExistHunt();
     if ($existingHunt && isset($_GET['pokemonName'])) {
@@ -20,15 +21,15 @@ if (!empty($_SESSION['id']) && $_SESSION['id'] != 0) {
     }
 
     if (isset($_POST['saveHunt'])) {
-        $controlHunts->method = $_POST['methodSelected'];
-        $controlHunts->version = $_POST['versionSelected'];
-        $controlHunts->nbEncounter = $_POST ['encounterCount'];
+        $controlHunts->idMethod = $_POST['methodSelected'];
+        $controlHunts->idVersion = $_POST['versionSelected'];
+        $controlHunts->nbEncounter = $_POST['encounterCount'];
         $savingHunt = $controlHunts->savingHunt();
     }
 
     if (isset($_POST['validHunt'])) {
-        $controlHunts->method = $_POST['methodSelected'];
-        $controlHunts->version = $_POST['versionSelected'];
+        $controlHunts->idMethod = $_POST['methodSelected'];
+        $controlHunts->idVersion = $_POST['versionSelected'];
         $controlHunts->nbEncounter = $_POST ['encounterCount'];
         $savingHunt = $controlHunts->validHunt();
     }
