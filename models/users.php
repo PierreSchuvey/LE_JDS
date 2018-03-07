@@ -15,7 +15,7 @@ class users extends dataBase {
     }
 
     public function loginIn() {
-        $userLog = $this->db->prepare('SELECT `id`,`pseudo`, `email`, `password`, `profilePicture`, `friendCode`, `bioUsers` FROM `users` WHERE `pseudo` = :pseudo');
+        $userLog = $this->db->prepare('SELECT `id`,`pseudo`, `password` FROM `users` WHERE `pseudo` = :pseudo');
         $userLog->bindValue(':pseudo', $this->pseudo, PDO::PARAM_STR);
         $userLog->execute();
         return $userLog = $userLog->fetch(PDO::FETCH_OBJ);
@@ -37,13 +37,6 @@ class users extends dataBase {
             }
             return $userConnectedInfos;
         }
-    }
-
-    public function oterUsers() {
-        $otherUsersList = $this->db->prepare('SELECT `id`, `pseudo`, `password`, `friendCode`, `bioUsers`, `profilePicture` FROM users WHERE id <> :id');
-        $otherUsersList->bindValue(':id', $this->id, PDO::PARAM_STR);
-        $otherUsersList->execute();
-        return $otherUsersList = $otherUsersList->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function oterUsersInfos() {
@@ -141,6 +134,31 @@ class users extends dataBase {
         $updatePassword->bindValue(':password', $this->password, PDO::PARAM_STR);
         //Si l'insertion s'est correctement déroulée on retourne vrai
         return $updatePassword->execute();
+    }
+
+    public function getPatientListPagination($offset) {
+        //On prépare la requête sql qui insert les champs sélectionnés, les valeurs de type :lastname sont des marqueurs nominatifs
+        $query = 'SELECT `pseudo` FROM users WHERE id <> :id ORDER BY `pseudo` LIMIT 12 OFFSET :offset';
+        $otherUsersList = $this->db->prepare($query);
+        $otherUsersList->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $otherUsersList->bindValue(':id', $this->id, PDO::PARAM_STR);
+        //Si l'insertion s'est correctement déroulée, on retourne true car execute() est un booléen
+        if ($otherUsersList->execute()) {
+            $otherUsersList = $otherUsersList->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            $otherUsersList = false;
+        }
+        return $otherUsersList;
+    }
+
+    /**
+     * Récupérer le nombre de patient
+     */
+    public function countPatient() {
+        $query = 'SELECT COUNT(`id`) AS `numberOfUsers` FROM `users`;';
+        $patientCount = $this->db->query($query);
+        $patientCountResult = $patientCount->fetch(PDO::FETCH_OBJ);
+        return $patientCountResult;
     }
 
     public function __destruct() {

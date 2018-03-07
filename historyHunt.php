@@ -20,26 +20,40 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
             </thead>
             <tbody>
                 <?php
-                if (empty($finishedHunt)) {
-                    ?></table><center><p>Vous n'avez pas de shasses en cours </p><?php
-                } else {
-                    foreach ($finishedHunt as $finishedHunt) {
-                        ?>
-                    <tr>
-                        <td><?= $finishedHunt->pokemon; ?></td>
-                        <td><?= $finishedHunt->version; ?></td>
-                        <td><?= $finishedHunt->method; ?></td>
-                        <td><?= $finishedHunt->nbEncounter; ?></td>
-                        <td><?= $finishedHunt->endDate; ?></td>
-                    </tr>
-                    <?php
+                if (empty($finishedHuntList)) {
+                    ?><center><p>Vous n'avez pas de shasses en cours </p><?php
+                    } else {
+                        foreach ($finishedHuntList as $finishedHuntList) {
+                            ?>
+                        <tr>
+                            <td><?= $finishedHuntList->pokemon; ?></td>
+                            <td><?= $finishedHuntList->version; ?></td>
+                            <td><?= $finishedHuntList->method; ?></td>
+                            <td><?= $finishedHuntList->nbEncounter; ?></td>
+                            <td><?= $finishedHuntList->endDate; ?></td>
+                        </tr>
+                        <?php
+                    }
                 }
-            }
+                ?>
+        </table>
+        <?php
+        if ($finishedHuntCount->numberOfFinishedHunt > 7) {
             ?>
-            </tbody>
-            </table>
-    </div>
-<?php } else { ?>
+            <div class="row">
+                <div class="col-lg-offset-4">
+                    <a href="/historique_de_mes_captures?page=<?= $page - 1 ?>" class="<?= $start <= 1 ? 'disabled' : '' ?> btn">Précédente</a>
+                    <?php for ($pageNumber = 1; $pageNumber <= $maxPagination; $pageNumber++) { ?>
+                        <a href="/historique_de_mes_captures?page=<?= $pageNumber ?>" class="<?= $page == $pageNumber ? 'disabled' : '' ?> btn" ><?= $pageNumber ?></a>
+                    <?php } ?>
+                    <a href="/historique_de_mes_captures?page=<?= $page + 1 ?>" class="<?= $page >= $maxPagination ? 'disabled' : '' ?> btn">Suivante</a>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+} else {
+    ?>
     <div class="container  bodyPage">
         <center><p>Veuillez vous inscrire ou vous connecter pour voir vos shasses en cours.</p></center>
         <div class="row">

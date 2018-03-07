@@ -47,7 +47,7 @@
                     </div>
                     <li id="lienancre11"><a href="/pokedex_complet" class="mainTitle" id="subNavTitle" title="pokedex">Pokedex</a></li>
                     <li id="lienancre11"><a href="/shasseurs.php" class="mainTitle" id="subNavTitle" title="experiences">Shasseurs</a></li>
-                    <li id="lienancre11"><a href="#" class="mainTitle" id="subNavTitle" title="hobbies">Contact</a></li>
+                    <li id="lienancre11"><a href="mailto:pierreschuvey@gmail.com"  class="libelNav">Contact</a></li>
                 </div>
             </ul>
             <div class="row">
@@ -90,7 +90,7 @@
                                 <a href="/liste_des_shasseurs" class="libelNav"><img src="../assets/img/trade.png"/>Shasseurs</a>
                             </div>
                             <div class="col-sm-3 col-md-3 col-lg-3 colNav">
-                                <a href="#" class="libelNav"><img class="imgNav" src="../assets/img/contact.png"/>Contact</a>
+                                <a href="mailto:pierreschuvey@gmail.com"  class="libelNav"><img class="imgNav" src="../assets/img/contact.png"/>Contact</a>
                             </div>
                         </div>
                     </div>

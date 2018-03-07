@@ -18,17 +18,30 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($otherUsersList as $allOtherUsers) { ?>
+                <?php foreach ($listShasseurs as $listShasseurs) { ?>
                     <tr>
-                        <td><?= $allOtherUsers->pseudo; ?></td>
+                        <td><?= $listShasseurs->pseudo; ?></td>
                         <td>100 %</td>
-                        <td><a href="visite_du_profil/<?= $allOtherUsers->pseudo; ?>" type="submit"><img src="/assets/img/loupepkm.png"></a></td>
+                        <td><a href="visite_du_profil/<?= $listShasseurs->pseudo; ?>" type="submit"><img src="/assets/img/loupepkm.png"></a></td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
-    </div>
-<?php } else {
+        <?php if ($usersCount->numberOfUsers > 13) { ?>
+            <div class = "row">
+                <div class = "col-lg-offset-4">
+                    <a href = "/liste_des_shasseurs?page=<?= $page - 1 ?>" class = "<?= $start <= 1 ? 'disabled' : '' ?> btn">Précédente</a>
+                    <?php for ($pageNumber = 1; $pageNumber <= $maxPagination; $pageNumber++) {
+                        ?>
+                        <a href="/liste_des_shasseurs?page=<?= $pageNumber ?>" class="<?= $page == $pageNumber ? 'disabled' : '' ?> btn" ><?= $pageNumber ?></a>
+                    <?php } ?>
+                    <a href="/liste_des_shasseurs?page=<?= $page + 1 ?>" class="<?= $page >= $maxPagination ? 'disabled' : '' ?> btn">Suivante</a>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+} else {
     ?>
     <center><p>Veuillez vous inscrire ou vous connecter pour voir le profil des autres utilisateurs.</p></center>
     <div class="row">

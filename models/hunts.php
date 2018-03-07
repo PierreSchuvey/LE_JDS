@@ -26,9 +26,11 @@ class hunts extends dataBase {
     }
 
     public function savingHunt() {
-        $query = 'UPDATE `hunts` SET nbEncounter=:nbEncounter WHERE idUser = :idUser AND idPokemon = :idPokemon';
+        $query = 'UPDATE `hunts` SET nbEncounter=:nbEncounter, idVersion=:idVersion, idMethod=:idMethod WHERE idUser = :idUser AND idPokemon = :idPokemon';
         $savingHunt = $this->db->prepare($query);
         $savingHunt->bindValue(':nbEncounter', $this->nbEncounter, PDO::PARAM_INT);
+        $savingHunt->bindValue(':idVersion', $this->idVersion, PDO::PARAM_INT);
+        $savingHunt->bindValue(':idMethod', $this->idMethod, PDO::PARAM_INT);
         $savingHunt->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         $savingHunt->bindValue(':idPokemon', $this->idPokemon, PDO::PARAM_INT);
         //Si l'insertion s'est correctement déroulée on retourne vrai
@@ -45,15 +47,6 @@ class hunts extends dataBase {
         $validHunt->bindValue(':idPokemon', $this->idPokemon, PDO::PARAM_INT);
         //Si l'insertion s'est correctement déroulée on retourne vrai
         return $validHunt->execute();
-    }
-
-    public function getSavedHunt() {
-        $query = 'SELECT hunts.id AS id, pokemon.nomPkm AS pokemon, huntMethods.methode AS method, versions.version AS version, hunts.nbEncounter AS nbEncounter FROM hunts LEFT JOIN pokemon ON pokemon.id = hunts.idPokemon LEFT JOIN huntMethods ON huntMethods.id = hunts.idMethod LEFT JOIN versions ON versions.id = hunts.idVersion WHERE hunts.idUser = :idUser AND hunts.catchStatement=0';
-        $getSavedHunt = $this->db->prepare($query);
-        $getSavedHunt->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
-        //Si l'insertion s'est correctement déroulée on retourne vrai
-        $getSavedHunt->execute();
-        return $getSavedHunt = $getSavedHunt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function getFinishedHunt() {
@@ -81,6 +74,58 @@ class hunts extends dataBase {
         $addNewHunt->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         //Si l'insertion s'est correctement déroulée on retourne vrai
         return $addNewHunt->execute();
+    }
+
+    public function getSavedHuntListPagination($offset) {
+
+        //On prépare la requête sql qui insert les champs sélectionnés, les valeurs de type :lastname sont des marqueurs nominatifs
+        $query = 'SELECT hunts.id AS id, pokemon.nomPkm AS pokemon, huntMethods.methode AS method, versions.version AS version, hunts.nbEncounter AS nbEncounter FROM hunts LEFT JOIN pokemon ON pokemon.id = hunts.idPokemon LEFT JOIN huntMethods ON huntMethods.id = hunts.idMethod LEFT JOIN versions ON versions.id = hunts.idVersion WHERE hunts.idUser = :idUser AND hunts.catchStatement=0 ORDER BY `nbEncounter` LIMIT 11 OFFSET :offset';
+        $savedHuntList = $this->db->prepare($query);
+        $savedHuntList->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $savedHuntList->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        //Si l'insertion s'est correctement déroulée, on retourne true car execute() est un booléen
+        if ($savedHuntList->execute()) {
+            $savedHuntList = $savedHuntList->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            $savedHuntList = false;
+        }
+        return $savedHuntList;
+    }
+
+    /**
+     * Récupérer le nombre de patient
+     */
+    public function countSavedhunt() {
+        $query = 'SELECT COUNT(`id`) AS `numberOfSavedHunt` FROM `hunts` WHERE `catchStatement`=0;';
+        $savedHuntCount = $this->db->query($query);
+        $savedHuntCount = $savedHuntCount->fetch(PDO::FETCH_OBJ);
+        return $savedHuntCount;
+    }
+
+    public function getFinishedHuntListPagination($offset) {
+
+        //On prépare la requête sql qui insert les champs sélectionnés, les valeurs de type :lastname sont des marqueurs nominatifs
+        $query = 'SELECT hunts.id AS id, pokemon.nomPkm AS pokemon, huntMethods.methode AS method, versions.version AS version, hunts.nbEncounter AS nbEncounter,  hunts.endDate AS endDate FROM hunts LEFT JOIN pokemon ON pokemon.id = hunts.idPokemon LEFT JOIN huntMethods ON huntMethods.id = hunts.idMethod LEFT JOIN versions ON versions.id = hunts.idVersion WHERE hunts.idUser = :idUser AND hunts.catchStatement=1 ORDER BY `endDate` DESC LIMIT 7 OFFSET :offset';
+        $finishedHuntList = $this->db->prepare($query);
+        $finishedHuntList->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $finishedHuntList->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        //Si l'insertion s'est correctement déroulée, on retourne true car execute() est un booléen
+        if ($finishedHuntList->execute()) {
+            $finishedHuntList = $finishedHuntList->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            $finishedHuntList = false;
+        }
+        return $finishedHuntList;
+    }
+
+    /**
+     * Récupérer le nombre de patient
+     */
+    public function countFinishedhunt() {
+        $query = 'SELECT COUNT(`id`) AS `numberOfFinishedHunt` FROM `hunts` WHERE `catchStatement` = 1';
+        $savedHuntCount = $this->db->query($query);
+        $savedHuntCount = $savedHuntCount->fetch(PDO::FETCH_OBJ);
+        return $savedHuntCount;
     }
 
     public function __destruct() {
