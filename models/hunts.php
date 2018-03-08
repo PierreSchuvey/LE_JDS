@@ -10,6 +10,7 @@ class hunts extends dataBase {
     public $beginDate = '';
     public $endDate = '';
     public $idUser = 0;
+    public $idGen = 0;
 
     public function __construct() {
         parent::__construct();
@@ -126,6 +127,21 @@ class hunts extends dataBase {
         $savedHuntCount = $this->db->query($query);
         $savedHuntCount = $savedHuntCount->fetch(PDO::FETCH_OBJ);
         return $savedHuntCount;
+    }
+
+    public function countFinishedHuntByGen() {
+
+        //On prépare la requête sql qui insert les champs sélectionnés, les valeurs de type :lastname sont des marqueurs nominatifs
+        $query = 'SELECT COUNT(hunts.id) AS numberOfFinishedHunt, pokemon.idGen FROM hunts INNER JOIN pokemon ON pokemon.id = hunts.idPokemon WHERE hunts.idUser = :idUser AND hunts.catchStatement = 1 GROUP BY pokemon.idGen';
+        $finishedHuntListByGen = $this->db->prepare($query);
+        $finishedHuntListByGen->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        //Si l'insertion s'est correctement déroulée, on retourne true car execute() est un booléen
+        if ($finishedHuntListByGen->execute()) {
+            $finishedHuntListByGen = $finishedHuntListByGen->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            $finishedHuntListByGen = false;
+        }
+        return $finishedHuntListByGen;
     }
 
     public function __destruct() {

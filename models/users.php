@@ -40,7 +40,7 @@ class users extends dataBase {
     }
 
     public function oterUsersInfos() {
-        $otherUsersProfil = $this->db->prepare('SELECT `id`, `pseudo`, `password`, `friendCode`, `bioUsers`, `profilePicture`, `email` FROM users WHERE pseudo = :pseudo');
+        $otherUsersProfil = $this->db->prepare('SELECT `users`.`id`, `users`.`pseudo`, `users`.`password`, `users`.`friendCode`, `users`.`bioUsers`, `users`.`profilePicture`, `users`.`email`, COUNT(hunts.id) AS `nbUsersHunts` FROM users INNER JOIN `hunts` ON `users`.`id` = `hunts`.`idUser` WHERE pseudo = :pseudo');
         $otherUsersProfil->bindValue(':pseudo', $this->pseudo, PDO::PARAM_STR);
         if ($otherUsersProfil->execute()) {
             $otherUserConnectedInfos = $otherUsersProfil->fetch(PDO::FETCH_OBJ);
@@ -138,7 +138,7 @@ class users extends dataBase {
 
     public function getPatientListPagination($offset) {
         //On prépare la requête sql qui insert les champs sélectionnés, les valeurs de type :lastname sont des marqueurs nominatifs
-        $query = 'SELECT `pseudo` FROM users WHERE id <> :id ORDER BY `pseudo` LIMIT 12 OFFSET :offset';
+        $query = 'SELECT `pseudo`, COUNT(hunts.id) AS `nbUsersHunts` FROM `users` LEFT JOIN `hunts` ON `users`.`id` = `hunts`.`idUser` WHERE users.id <> :id GROUP BY users.id LIMIT 12 OFFSET :offset';
         $otherUsersList = $this->db->prepare($query);
         $otherUsersList->bindValue(':offset', $offset, PDO::PARAM_INT);
         $otherUsersList->bindValue(':id', $this->id, PDO::PARAM_STR);
@@ -155,7 +155,10 @@ class users extends dataBase {
      * Récupérer le nombre de patient
      */
     public function countPatient() {
-        $query = 'SELECT COUNT(`id`) AS `numberOfUsers` FROM `users`;';
+        $query = 'SELECT COUNT(`id`) AS `numberOfUsers` FROM `users`;
+
+
+        ';
         $patientCount = $this->db->query($query);
         $patientCountResult = $patientCount->fetch(PDO::FETCH_OBJ);
         return $patientCountResult;

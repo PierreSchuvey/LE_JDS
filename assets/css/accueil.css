@@ -1,3 +1,16 @@
+.progress{
+    background-image:repeating-linear-gradient(to right, #febab9, #ff9f9f, #ff8383, #ff6666, #ff4343, #fe0000);
+    border-style :ridge;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+.progress-bar{
+    background-image:repeating-linear-gradient(to right, #6eff00, #59d81b, #44b223, #2f8e26, #1a6c25, #004c22);
+    border-style : solid;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-width : 1px;
+}
 .btn{
     color : #A73232;
     font-size : 30px;
@@ -180,16 +193,6 @@ header{
 .progressAchievement{
     background : green ;
     background-image:radial-gradient(white, green);
-}
-.barProgress{
-    background-image:radial-gradient(white, red);
-    border:solid 2px black;
-}
-#progressAllG{
-
-    width: 1%;
-    height: 30px;
-    background-color: green;
 }
 textarea{
     resize: none;

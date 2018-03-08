@@ -8,16 +8,17 @@ include_once 'models/hunts.php';
 include_once 'controllers/otherUsersProfil.php';
 include_once 'vues/lastCapture.php';
 ?>
+
 <div class="container bodyPage">
     <div class="row">
         <div class="col-xs-offset-1 col-sm-offset-0 col-sm-1 col-md-offset-3 col-md-5 col-lg-offset-0 col-lg-1">
             <img id="profilImage" src="/media/img/<?= $otherUsersProfil->id ?>/<?= $otherUsersProfil->profilePicture; ?>" />
         </div>
         <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
-            <p id="welcomeText" class="mainTitle" text-align="center">Profil de <?= $otherUsersProfil->pseudo; ?> </p>
+            <p id="welcomeText" class="mainTitle" text-align="center">Profil de <span id="currentPseudo"><?= $otherUsersProfil->pseudo; ?></span></p>
         </div>
         <div class="col-sm-offset-5 col-md-offset-2 col-lg-offset-4">
-            <p id="caProfil">Code Ami : <?= $otherUsersProfil->friendCode; ?> </p>
+            <p id="caProfil">Code Ami : <?= $otherUsersProfil->friendCode; ?></p>
         </div>
         <?php
         if ($safaryFiend) {
@@ -59,67 +60,41 @@ include_once 'vues/lastCapture.php';
                 <span id="validModifTextarea">Valider</span>
             </div>
         </div>
-        <div class="row">
+        <div class = "row">
             <hr /><hr />
-            <div class="col-lg-12 progressProfil">
-                <p>Total :</p>
-                <div class="progress barProgress">
-                    <div class="progress progressAchievement" id="progressAllG" aria-valuenow="1"></div>
+            <div class = "col-lg-12 progressProfil">
+                <p>Total : <?= round($otherUsersProfil->nbUsersHunts / 825 * 100, 2); ?> %</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar"aria-valuemin="0" aria-valuemax="100" style="width:<?= round($otherUsersProfil->nbUsersHunts / 825 * 100, 2); ?>%"></div>
                 </div>
             </div>
-            <button id="moreProgress">+</button>
-            <button id="reduceProgress">-</button>
-            <div id="subprogress">
-                <div class="col-lg-6 progressProfil">
-                    <p>1ére génération</p>
-                    <div class="progress barProgress">
-                        <div class="progress progressAchievement" id="progress1G" aria-valuenow="1" aria-valuemax="70"></div>
-                    </div>
-                </div>
-                <div class="col-lg-6 progressProfil">
-                    <p>2éme génération</p>
-                    <div class="progress barProgress">
-                        <div class="progress progressAchievement" id="progress2G" aria-valuenow="1"></div>
-                    </div>
-                </div>
-                <div class="col-lg-6 progressProfil">
-                    <p>3éme génération</p>
-                    <div class="progress barProgress">
-                        <div class="progress progressAchievement" id="progress3G" aria-valuenow="1"></div>
-                    </div>
-                </div>
-                <div class="col-lg-6 progressProfil">
-                    <p>4éme génération</p>
-                    <div class="progress barProgress">
-                        <div class="progress progressAchievement" id="progress4G" aria-valuenow="1"></div>
-                    </div>
-                </div>
-                <div class="col-lg-6 progressProfil">
-                    <p>5éme génération</p>
-                    <div class="progress barProgress">
-                        <div class="progress progressAchievement" id="progress5G" aria-valuenow="1"></div>
-                    </div>
-                </div>
-                <div class="col-lg-6 progressProfil">
-                    <p>6éme génération</p>
-                    <div class="progress barProgress">
-                        <div class="progress progressAchievement" id="progress6G" aria-valuenow="1"></div>
-                    </div>
-                </div>
-                <div class="col-lg-6 progressProfil">
-                    <p>7éme génération</p>
-                    <div class="progress barProgress">
-                        <div class="progress progressAchievement" id="progress7G" aria-valuenow="1"></div>
-                    </div>
-                </div>
-                <div class="col-lg-6 progressProfil">
-                    <p>Formes d'alola</p>
-                    <div class = "progress barProgress">
-                        <div class = "progress progressAchievement" id = "progressAlola" aria-valuenow = "1"></div>
-                    </div>
+            <?php
+            if (!empty($finishedHuntByGen)) {
+                ?>
+                <button id = "moreProgress">+</button>
+                <button id = "reduceProgress">-</button>
+                <div id = "subprogress">
+                    <?php if (isset($finishedHuntByGen[0])) { ?>
+                        <div class = "col-lg-6 progressProfil">
+                            <p>Génération <?= $finishedHuntByGen[0]->idGen ?> = <?= round($finishedHuntByGen[0]->numberOfFinishedHunt / 151 * 100, 2); ?> %</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar"aria-valuemin="0" aria-valuemax="100" style="width:<?= round($finishedHuntByGen[0]->numberOfFinishedHunt / 151 * 100, 2); ?>%"></div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($finishedHuntByGen[1])) { ?>
+                        <div class = "col-lg-6 progressProfil">
+                            <p>Génération <?= $finishedHuntByGen[1]->idGen ?> = <?= round($finishedHuntByGen[1]->numberOfFinishedHunt / 99 * 100, 2); ?> %</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar"aria-valuemin="0" aria-valuemax="100" style="width:<?= round($finishedHuntByGen[1]->numberOfFinishedHunt / 99 * 100, 2); ?>%"></div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
-        </div>
+            <?php
+        }
+        ?>
         <hr /><button id = "showRatios">Voir les ratios de captures</button><button id = "hideRatios">Cacher les ratios de captures</button><hr />
         <div id = "ratioHub">
             <div class = "row ratioStats">
