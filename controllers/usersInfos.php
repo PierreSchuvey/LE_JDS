@@ -7,5 +7,8 @@ if (!empty($_SESSION['id'])) {
     $safaryFiend = new safaryFriend();
     $safaryFiend->idUser = $_SESSION['id'];
     $safaryFiend = $safaryFiend->getSafaryByUser();
+    $finishedHunts = new hunts();
+    $finishedHunts->idUser = $_SESSION['id'];
+    $finishedHuntByGen = $finishedHunts->countFinishedHuntByGen();
 }
 ?>

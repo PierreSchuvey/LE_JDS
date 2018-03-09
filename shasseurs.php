@@ -21,7 +21,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
                 <?php foreach ($listShasseurs as $listShasseurs) { ?>
                     <tr>
                         <td><?= $listShasseurs->pseudo; ?></td>
-                        <td><?= round($listShasseurs->nbUsersHunts / 151 * 100, 2); ?> %</td>
+                        <td><?= round($listShasseurs->nbUsersHunts / 825 * 100, 2); ?> %</td>
                         <td><a href="visite_du_profil/<?= $listShasseurs->pseudo; ?>" type="submit"><img src="/assets/img/loupepkm.png"></a></td>
                     </tr>
                 <?php } ?>
