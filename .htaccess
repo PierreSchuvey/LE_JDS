@@ -10,7 +10,7 @@
     #([0-9]+) = page=$2
 RewriteRule connexion /login.php [L]
 RewriteRule inscription /subscribeForm.php [L]
-RewriteRule mon_profil/([A-Za-z]+([0-9]{2})?)?$ /profil.php [L]
+RewriteRule mon_profil/([A-Za-z]+[0-9]{0,9}?)?$ /profil.php [L]
 RewriteRule modification_des_infos_profils /updateProfil.php?infosUsersUpdate [L]
 RewriteRule modification_avatar /updateProfil.php?profilePictureUpdate [L]
 RewriteRule modification_du_mot_de_passe /updateProfil.php?passwordUpdate [L]
