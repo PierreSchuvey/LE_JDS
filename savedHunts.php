@@ -7,6 +7,7 @@ include_once 'controllers/savedHuntControllers.php';
 include_once 'vues/lastCapture.php';
 if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
     ?>
+    <script src="/assets/js/deleteSavedHunt.js"></script>
     <div class = "container bodyPage">
         <table class="" id="savedShasse">
             <thead>
@@ -16,6 +17,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
                     <th class="col-lg-2">Methode</th>
                     <th class="col-lg-2">Nombre de rencontres</th>
                     <th class="col-lg-2">Reprendre la shasse</th>
+                    <th class="col-lg-2">Supprimer</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,12 +27,14 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
                     } else {
                         foreach ($listSavedHunt as $listSavedHunt) {
                             ?>
-                        <tr>
+                        <tr id="fuck">
+                            <td id="idHuntsToDelet"><?= $listSavedHunt->id; ?></td>
                             <td><?= $listSavedHunt->pokemon; ?></td>
                             <td><?= $listSavedHunt->version; ?></td>
                             <td><?= $listSavedHunt->method; ?></td>
                             <td><?= $listSavedHunt->nbEncounter; ?></td>
                             <td><a href="/shasse_en_cours/<?= $listSavedHunt->pokemon; ?>_<?= $listSavedHunt->version; ?>_<?= $listSavedHunt->method; ?>_<?= $listSavedHunt->nbEncounter; ?>" type="submit"><img src="/assets/img/loupepkm.png"></a></td>
+                            <td><button class="btn deleteButton">Supprimer</button></td>
                         </tr>
                         <?php
                     }
@@ -43,11 +47,11 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
             ?>
             <div class="row">
                 <div class="col-lg-offset-4">
-                    <a href="/shasses_non_accomplies?page=<?= $page - 1 ?>" class="<?= $start <= 1 ? 'disabled' : '' ?> btn">Précédente</a>
+                    <a href='/Generation_<?= $_GET['Gen']; ?>/shasses_non_accomplies_page_<?= $page - 1 ?>' class="<?= $start <= 1 ? 'disabled' : '' ?> btn">Précédente</a>
                     <?php for ($pageNumber = 1; $pageNumber <= $maxPagination; $pageNumber++) { ?>
-                        <a href="/shasses_non_accomplies?page=<?= $pageNumber ?>" class="<?= $page == $pageNumber ? 'disabled' : '' ?> btn" ><?= $pageNumber ?></a>
+                        <a href="/Generation_<?= $_GET['Gen']; ?>/shasses_non_accomplies_page_<?= $pageNumber ?>" class="<?= $page == $pageNumber ? 'disabled' : '' ?> btn" ><?= $pageNumber ?></a>
                     <?php } ?>
-                    <a href="/shasses_non_accomplies?page=<?= $page + 1 ?>" class="<?= $page >= $maxPagination ? 'disabled' : '' ?> btn">Suivante</a>
+                    <a href="/Generation_<?= $_GET['Gen']; ?>/shasses_non_accomplies_page_<?= $page + 1 ?>" class="<?= $page >= $maxPagination ? 'disabled' : '' ?> btn">Suivante</a>
                 </div>
             </div>
         </div>

@@ -2,7 +2,6 @@
 
 if (!empty($_SESSION['id'])) {
     $controlHunts = new hunts();
-
     $controlHunts->idUser = $_SESSION['id'];
 //par défault la première page
     $page = 1;
@@ -12,8 +11,9 @@ if (!empty($_SESSION['id'])) {
         $page = $_GET['page'];
     }
     $start = ($page - 1) * $limit;
+    $controlHunts->idGen = $_GET['Gen'];
     $listSavedHunt = $controlHunts->getSavedHuntListPagination($start);
-
+    $controlHunts->idGen = $_GET['Gen'];
     $huntsCount = $controlHunts->countSavedhunt();
     $maxPagination = ceil($huntsCount->numberOfSavedHunt / $limit);
 }

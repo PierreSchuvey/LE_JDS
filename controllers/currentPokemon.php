@@ -10,13 +10,16 @@ $currentName = $selectedPokemon->nomPkm;
 $previousPkm = $selectedPokemon->id - 1;
 $nextPkm = $selectedPokemon->id + 1;
 $lastPokemon = $currentPokemon->lastPokemon();
+$maxId = $lastPokemon->id;
+$lastPokemonMoinsUn = $lastPokemon->id - 1;
 $lastPokemon = $lastPokemon->nomPkm;
 $firstPokemon = $currentPokemon->firstPokemon();
 $firstPokemon = $firstPokemon->nomPkm;
 
 $currentPokemon->id = $nextPkm;
 $nextPokemon = $currentPokemon->nextPokemon();
-if ($selectedPokemon->id >= 151) {
+
+if ($selectedPokemon->id >= 154) {
 
 } else {
     $nextPokemon = $nextPokemon->nomPkm;

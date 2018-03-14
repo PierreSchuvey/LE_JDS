@@ -13,12 +13,12 @@ include_once 'controllers/currentPokemon.php';
             <table class="nextPreviousTable">
                 <td class="nextPreviousTable" class="col-lg-3"><a href="<?= $selectedPokemon->id <= 1 ? $lastPokemon : $previousPokemon; ?>" id="previousButton" ><<</a></td>
                 <td class="col-lg-2">
-                <center><p>#<?= $selectedPokemon->id <= 1 ? $selectedPokemon->id + 150 : $selectedPokemon->id - 1; ?></p></center>
-                <img src="../assets/minSprite/<?= $selectedPokemon->id <= 1 ? $selectedPokemon->id + 150 : $selectedPokemon->id - 1; ?>.png" width='80px'></td>
+                <center><p>#<?= $selectedPokemon->id <= 1 ? $selectedPokemon->id + $maxId - 1 : $selectedPokemon->id - 1; ?></p></center>
+                <img src="../assets/minSprite/<?= $selectedPokemon->id <= 1 ? $selectedPokemon->id + $maxId - 1 : $selectedPokemon->id - 1; ?>.png" width='80px'></td>
                 <td class="hidden-xs col-lg-4"><center><p><?= $currentName; ?></p></center></td>
-                <td class="col-lg-2"><center><p>#<?= $selectedPokemon->id >= 151 ? $selectedPokemon->id - 150 : $selectedPokemon->id + 1; ?></p></center>
-                <img src="../assets/minSprite/<?= $selectedPokemon->id >= 151 ? $selectedPokemon->id - 150 : $selectedPokemon->id + 1; ?>.png" width='80px'></td>
-                <td class="col-lg-2"><a href="<?= $selectedPokemon->id >= 151 ? $firstPokemon : $nextPokemon; ?>" id="nextButton">>></a></td>
+                <td class="col-lg-2"><center><p>#<?= $selectedPokemon->id >= $maxId ? $selectedPokemon->id - $lastPokemonMoinsUn : $selectedPokemon->id + 1; ?></p></center>
+                <img src="../assets/minSprite/<?= $selectedPokemon->id >= $maxId ? $selectedPokemon->id - $lastPokemonMoinsUn : $selectedPokemon->id + 1; ?>.png" width='80px'></td>
+                <td class="col-lg-2"><a href="<?= $selectedPokemon->id >= $maxId ? $firstPokemon : $nextPokemon; ?>" id="nextButton">>></a></td>
             </table>
         </div>
     </div>

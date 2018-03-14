@@ -1,7 +1,10 @@
 <?php
 
 $allPokemon = new pokemons();
-$allPokemon->idUser = $_SESSION['id'];
-$catchedPokemon = $allPokemon->getCatchedPokemonById();
+if (isset($_SESSION['id'])) {
+    $allPokemon->idUser = $_SESSION['id'];
+    $allPokemon->idGen = $_GET['idGen'];
+    $catchedPokemon = $allPokemon->getCatchedPokemonById();
+}
 ?>
 

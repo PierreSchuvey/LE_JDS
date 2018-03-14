@@ -17,18 +17,18 @@
             <li class = "toggleSubMenu mainTitle"><span class = "libelNav">1ére Gén.</span>
                 <ul class = "subMenu">
                     <li><a class = "subLink mainTitle" href = "/pokedex_Gen_1" title = "Pokedex 1st Gen">Pokedex</a></li>
-                    <li><a class = "subLink mainTitle" href = "/shasses_non_accomplies" title = "Shasses 1st Gen">Shasses</a></li>
-                    <li><a class = "subLink mainTitle" href = "/livingDex/" title = "LivingDex 1st Gen">LivingDex</a></li>
+                    <li><a class = "subLink mainTitle" href = "/Generation_1/shasses_non_accomplies_page_1" title = "Shasses 1st Gen">Shasses</a></li>
+                    <li><a class = "subLink mainTitle" href = "/livingDex/Generation_1" title = "LivingDex 1st Gen">LivingDex</a></li>
                 </ul>
             </li>
-             <!--<li class = "toggleSubMenu mainTitle"><span class = "libelNav">2éme Gén.</span>
+            <li class = "toggleSubMenu mainTitle"><span class = "libelNav">2éme Gén.</span>
                 <ul class = "subMenu">
-                    <li><a class = "subLink mainTitle" href = "pokedexGen.php?firstGen=152" title = "Pokedex 2nd Gen">Pokedex</a></li>
-                    <li><a class = "subLink mainTitle" href = "#" title = "Shasses 2nd Gen">Shasses</a></li>
-                    <li><a class = "subLink mainTitle" href = "#" title = "LivingDex 2nd Gen">LivingDex</a></li>
+                    <li><a class = "subLink mainTitle" href = "/pokedex_Gen_2" title = "Pokedex 2nd Gen">Pokedex</a></li>
+                    <li><a class = "subLink mainTitle" href = "/Generation_2/shasses_non_accomplies_page_1" title = "Shasses 2nd Gen">Shasses</a></li>
+                    <li><a class = "subLink mainTitle" href = "/livingDex/Generation_2" title = "LivingDex 2nd Gen">LivingDex</a></li>
                 </ul>
             </li>
-           <li class = "toggleSubMenu mainTitle"><span class = "libelNav">3éme Gén.</span>
+           <!--<li class = "toggleSubMenu mainTitle"><span class = "libelNav">3éme Gén.</span>
             <ul class = "subMenu">
             <li><a class = "subLink mainTitle" href = "pokedex3G.php" title = "Pokedex 3eme Gen">Pokedex</a></li>
             <li><a class = "subLink mainTitle" href = "#" title = "Shasses 3eme Gen">Shasses</a></li>

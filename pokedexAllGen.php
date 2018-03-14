@@ -9,7 +9,7 @@ include_once 'vues/lastCapture.php';
 <div class="container bodyPage">
     <div class="row">
         <span class="col-lg-12 pokedexCase">
-            <h2 class="mainTitle">1ére Génération</h2>
+            <h2 class="mainTitle">Pokedex</h2>
             <?php
             include 'controllers/showPokemonOnPokedex.php';
             ?>

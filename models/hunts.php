@@ -80,10 +80,11 @@ class hunts extends dataBase {
     public function getSavedHuntListPagination($offset) {
 
         //On prépare la requête sql qui insert les champs sélectionnés, les valeurs de type :lastname sont des marqueurs nominatifs
-        $query = 'SELECT hunts.id AS id, pokemon.nomPkm AS pokemon, huntMethods.methode AS method, versions.version AS version, hunts.nbEncounter AS nbEncounter FROM hunts LEFT JOIN pokemon ON pokemon.id = hunts.idPokemon LEFT JOIN huntMethods ON huntMethods.id = hunts.idMethod LEFT JOIN versions ON versions.id = hunts.idVersion WHERE hunts.idUser = :idUser AND hunts.catchStatement=0 ORDER BY `nbEncounter` LIMIT 11 OFFSET :offset';
+        $query = 'SELECT hunts.id AS id, pokemon.nomPkm AS pokemon, huntMethods.methode AS method, versions.version AS version, hunts.nbEncounter AS nbEncounter FROM hunts LEFT JOIN pokemon ON pokemon.id = hunts.idPokemon LEFT JOIN huntMethods ON huntMethods.id = hunts.idMethod LEFT JOIN versions ON versions.id = hunts.idVersion WHERE hunts.idUser = :idUser AND hunts.catchStatement=0 AND `pokemon`.`idGen` = :idGen ORDER BY `nbEncounter` LIMIT 11 OFFSET :offset';
         $savedHuntList = $this->db->prepare($query);
         $savedHuntList->bindValue(':offset', $offset, PDO::PARAM_INT);
         $savedHuntList->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        $savedHuntList->bindValue(':idGen', $this->idGen, PDO::PARAM_INT);
         //Si l'insertion s'est correctement déroulée, on retourne true car execute() est un booléen
         if ($savedHuntList->execute()) {
             $savedHuntList = $savedHuntList->fetchAll(PDO::FETCH_OBJ);
@@ -97,8 +98,10 @@ class hunts extends dataBase {
      * Récupérer le nombre de patient
      */
     public function countSavedhunt() {
-        $query = 'SELECT COUNT(`id`) AS `numberOfSavedHunt` FROM `hunts` WHERE `catchStatement`=0;';
-        $savedHuntCount = $this->db->query($query);
+        $query = 'SELECT COUNT(`hunts`.`id`) AS `numberOfSavedHunt` FROM `hunts` INNER JOIN `pokemon` ON `pokemon`.`id` = `hunts`.`idPokemon` WHERE `hunts`.`catchStatement`=0 AND `pokemon`.`idGen` = :idGen';
+        $savedHuntCount = $this->db->prepare($query);
+        $savedHuntCount->bindValue(':idGen', $this->idGen, PDO::PARAM_INT);
+        $savedHuntCount->execute();
         $savedHuntCount = $savedHuntCount->fetch(PDO::FETCH_OBJ);
         return $savedHuntCount;
     }
@@ -142,6 +145,15 @@ class hunts extends dataBase {
             $finishedHuntListByGen = false;
         }
         return $finishedHuntListByGen;
+    }
+
+    public function deleteSavedHunt() {
+        $query = 'DELETE FROM `hunts` WHERE `id` = :id';
+        $savedHuntCount = $this->db->prepare($query);
+        $savedHuntCount->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $savedHuntCount->execute();
+        $savedHuntCount = $savedHuntCount->fetch(PDO::FETCH_OBJ);
+        return $savedHuntCount;
     }
 
     public function __destruct() {

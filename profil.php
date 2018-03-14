@@ -6,8 +6,6 @@ include_once 'models/users.php';
 include_once 'models/safaryFriend.php';
 include_once 'models/hunts.php';
 include_once 'controllers/usersInfos.php';
-?>
-<?php
 if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connected'] == 1) {
     include_once 'vues/lastCapture.php';
     ?>

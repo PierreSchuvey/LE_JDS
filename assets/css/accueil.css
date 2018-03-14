@@ -1,3 +1,6 @@
+#idHuntsToDelet{
+    display:none;
+}
 .progress{
     background-image:repeating-linear-gradient(to right, #febab9, #ff9f9f, #ff8383, #ff6666, #ff4343, #fe0000);
     border-style :ridge;
@@ -12,8 +15,14 @@
     border-width : 1px;
 }
 .btn{
-    color : #A73232;
     font-size : 30px;
+    color:white;
+    background-color: #B56A6A;
+}
+.btn:hover{
+    font-size : 30px;
+    color:white;
+    background-color: #A73232;
 }
 .caseLivingDex{
     width: 90px;

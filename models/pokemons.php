@@ -4,6 +4,7 @@ class pokemons extends dataBase {
 
     public $id = 0;
     public $nomPkm = '';
+    public $idGen = 0;
 
     public function __construct() {
         parent::__construct();
@@ -19,7 +20,8 @@ class pokemons extends dataBase {
     }
 
     public function getCatchedPokemonById() {
-        $getCatchedPokemonById = $this->db->prepare('SELECT pokemon.id AS id, hunts.catchStatement AS catchStatement, hunts.idUser AS idUser FROM `pokemon` LEFT JOIN `hunts` ON pokemon.id = hunts.idPokemon ORDER BY pokemon.id ASC');
+        $getCatchedPokemonById = $this->db->prepare('SELECT pokemon.id AS id, hunts.catchStatement AS catchStatement, hunts.idUser AS idUser FROM `pokemon` LEFT JOIN `hunts` ON pokemon.id = hunts.idPokemon WHERE pokemon.idGen = :idGen ORDER BY pokemon.id ASC');
+        $getCatchedPokemonById->bindValue(':idGen', $this->idGen, PDO::PARAM_INT);
         $getCatchedPokemonById->execute();
         $getCatchedPokemonById = $getCatchedPokemonById->fetchAll(PDO::FETCH_OBJ);
         return $getCatchedPokemonById;
@@ -65,12 +67,29 @@ class pokemons extends dataBase {
         return $firstPokemon;
     }
 
+    public function firstPokemonByGen() {
+        $query = 'SELECT `id`, `nomPkm` FROM `pokemon` WHERE `id` = (SELECT MIN(`id`) FROM `pokemon` WHERE `idGen` = :idGen)';
+        $lastpokemonByGen = $this->db->prepare($query);
+        $lastpokemonByGen->bindValue(':idGen', $this->idGen, PDO::PARAM_INT);
+        $lastpokemonByGen->execute();
+        $lastpokemonByGen = $lastpokemonByGen->fetch(PDO::FETCH_ASSOC);
+        return $lastpokemonByGen;
+    }
+
     public function lastPokemon() {
         $lastPokemon = $this->db->prepare('SELECT id, nomPkm FROM `pokemon` WHERE `id` = (SELECT MAX(`id`) FROM `pokemon`)');
-        $lastPokemon->bindValue(':id', $this->id, PDO::PARAM_STR);
         $lastPokemon->execute();
         $lastPokemon = $lastPokemon->fetch(PDO::FETCH_OBJ);
         return $lastPokemon;
+    }
+
+    public function lastPokemonByGen() {
+        $query = 'SELECT `id`, `nomPkm` FROM `pokemon` WHERE `id` = (SELECT MAX(`id`) FROM `pokemon` WHERE `idGen` = :idGen)';
+        $lastpokemonByGen = $this->db->prepare($query);
+        $lastpokemonByGen->bindValue(':idGen', $this->idGen, PDO::PARAM_INT);
+        $lastpokemonByGen->execute();
+        $lastpokemonByGen = $lastpokemonByGen->fetch(PDO::FETCH_ASSOC);
+        return $lastpokemonByGen;
     }
 
     public function __destruct() {
