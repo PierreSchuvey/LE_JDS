@@ -1,6 +1,4 @@
-#idHuntsToDelet{
-    display:none;
-}
+
 .progress{
     background-image:repeating-linear-gradient(to right, #febab9, #ff9f9f, #ff8383, #ff6666, #ff4343, #fe0000);
     border-style :ridge;

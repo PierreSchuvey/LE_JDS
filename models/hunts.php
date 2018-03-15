@@ -152,7 +152,6 @@ class hunts extends dataBase {
         $savedHuntCount = $this->db->prepare($query);
         $savedHuntCount->bindValue(':id', $this->id, PDO::PARAM_INT);
         $savedHuntCount->execute();
-        $savedHuntCount = $savedHuntCount->fetch(PDO::FETCH_OBJ);
         return $savedHuntCount;
     }
 

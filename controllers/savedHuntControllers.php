@@ -1,5 +1,14 @@
 <?php
 
+if (isset($_GET['idDeleteHunt'])) {
+    $deletePokemon = new hunts();
+    $deletePokemon->id = $_GET['idDeleteHunt'];
+    $deletePokemon->deleteSavedHunt();
+} else {
+    echo 'ma bite';
+}
+
+
 if (!empty($_SESSION['id'])) {
     $controlHunts = new hunts();
     $controlHunts->idUser = $_SESSION['id'];
