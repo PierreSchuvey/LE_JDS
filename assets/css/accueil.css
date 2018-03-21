@@ -1,4 +1,21 @@
-
+.modal{
+    background-color: rgba(242, 227, 227, 0.5);
+}
+.modal-header{
+    background-color: #A73232;
+    color:white;
+    text-align: center;
+}
+.modal-body{
+    background-color: #EFDDDD;
+    color:#333338;
+    text-align: center;
+}
+.modal-footer{
+    background-color: #EFDDDD;
+    color:white;
+    text-align: center;
+}
 .progress{
     background-image:repeating-linear-gradient(to right, #febab9, #ff9f9f, #ff8383, #ff6666, #ff4343, #fe0000);
     border-style :ridge;

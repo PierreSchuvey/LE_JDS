@@ -14,7 +14,7 @@ class safaryFriend extends dataBase {
     }
 
     public function getAllSafaryType() {
-        $query = 'SELECT type FROM `pokemonsInSafary` GROUP BY `type`';
+        $query = 'SELECT `types`.`type` AS `type`, `positionInSafary`.`idType` AS `idType` FROM `types` INNER JOIN `positionInSafary`ON `types`.`id` = `positionInSafary`.`idType` GROUP BY `types`.`id` ';
         $allSafary = $this->db->query($query);
         if ($allSafary) {
             $allSafary = $allSafary->fetchAll(PDO::FETCH_OBJ);
@@ -23,7 +23,7 @@ class safaryFriend extends dataBase {
     }
 
     public function getFirstPokemonsByType() {
-        $pokemonByType = $this->db->prepare('SELECT `pokemon`  FROM `pokemonsInSafary` WHERE `type` = :type AND nbPokemon = :nbPokemon');
+        $pokemonByType = $this->db->prepare('SELECT `pokemon`.`nomPkm` FROM `pokemon` INNER JOIN `positionInSafary` ON `positionInSafary`.`idPokemon` = `pokemon`.`id` INNER JOIN `types` ON  `positionInSafary`.`idType`= `types`.`id` AND `positionInSafary`.`position`= :nbPokemon AND `types`.`type`= :type');
         $pokemonByType->bindValue(':type', $this->type, PDO::PARAM_STR);
         $pokemonByType->bindValue(':nbPokemon', $this->nbPokemon, PDO::PARAM_INT);
         if ($pokemonByType->execute()) {
