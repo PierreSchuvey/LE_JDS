@@ -19,7 +19,7 @@ $firstPokemon = $firstPokemon->nomPkm;
 $currentPokemon->id = $nextPkm;
 $nextPokemon = $currentPokemon->nextPokemon();
 
-if ($selectedPokemon->id >= 154) {
+if ($selectedPokemon->id >= $maxId) {
 
 } else {
     $nextPokemon = $nextPokemon->nomPkm;

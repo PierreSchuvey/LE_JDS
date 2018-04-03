@@ -19,12 +19,12 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1 && !empty($_SES
             ce site t'offriras de nombreuses possibilités aides dans l'accomplissement de ta quête des 807 chromatiques.
         </p>
         <p class = "introInfos">
-            Différentes astuces te serons proposés, ainsi qu'un suivis personnels de tes captures (nombre de rencontres, date, heure),
+            Différentes astuces te serons proposées, ainsi qu'un suivi personnel de tes captures (nombre de rencontres, date, heure),
             tu y trouveras aussi la localisation et les différentes méthodes pour shasser chacune de tes futures cibles.
         </p>
         <p class="introInfos">
             Tu pourras également discuter, aider, ou comparer tes résultats de shasse avec les autres utilisateurs,
-            c'est pourquoi il vous sera demander de rester courtois avec l'ensemble des shasseurs.
+            c'est pourquoi il vous sera demandé de rester courtois avec l'ensemble des shasseurs.
         </p>
     </div>
     <?php

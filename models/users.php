@@ -21,6 +21,10 @@ class users extends dataBase {
         return $userLog = $userLog->fetch(PDO::FETCH_OBJ);
     }
 
+    /*
+     * Méthode permettant d'obtenirtoute les informations de l'utilisateur connecté
+     */
+
     public function connectedInfos() {
         $userConnected = $this->db->prepare('SELECT `users`.`id`, `users`.`pseudo`, `users`.`password`, `users`.`friendCode`, `users`.`bioUsers`, `users`.`profilePicture`, `users`.`email`, COUNT(hunts.id) AS `nbUsersHunts` FROM users INNER JOIN `hunts` ON `users`.`id` = `hunts`.`idUser` WHERE users.id = :id AND hunts.catchStatement = 1');
         $userConnected->bindValue(':id', $this->id, PDO::PARAM_STR);
@@ -54,6 +58,10 @@ class users extends dataBase {
         return $otherUserConnectedInfos;
     }
 
+    /*
+     * Méthode permettant de récuper tous les pseudo déjà existant
+     */
+
     public function allPseudoUser() {
         $query = 'SELECT `id`, `pseudo` FROM `users`';
         $responseRequest = $this->db->query($query);
@@ -79,6 +87,10 @@ class users extends dataBase {
             return $usedPassword = $usedPassword->fetch(PDO::FETCH_OBJ);
         }
     }
+
+    /*
+     * Méthode permettant d'ajouter un utilisateur à la base de données
+     */
 
     public function addUser() {
         //On prépare la requête sql qui insert dans les champs selectionnés, les valeurs sont des marqueurs nominatifs
@@ -136,6 +148,10 @@ class users extends dataBase {
         return $updatePassword->execute();
     }
 
+    /*
+     * Obtenir la liste des utilisateurs hors utilisateur connecté par tranc de 12
+     */
+
     public function getPatientListPagination($offset) {
         //On prépare la requête sql qui insert les champs sélectionnés, les valeurs de type :lastname sont des marqueurs nominatifs
         $query = 'SELECT `pseudo`, COUNT(hunts.id) AS `nbUsersHunts` FROM `users` LEFT JOIN `hunts` ON `users`.`id` = `hunts`.`idUser` WHERE users.id <> :id AND hunts.catchStatement = 1 OR `hunts`.`catchStatement` IS NULL GROUP BY users.id LIMIT 12 OFFSET :offset';
@@ -155,12 +171,7 @@ class users extends dataBase {
      * Récupérer le nombre de patient
      */
     public function countPatient() {
-        $query = 'SELECT COUNT(`id`) AS `numberOfUsers` FROM `users`;
-
-
-
-
-        ';
+        $query = 'SELECT COUNT(`id`) AS `numberOfUsers` FROM `users`';
         $patientCount = $this->db->query($query);
         $patientCountResult = $patientCount->fetch(PDO::FETCH_OBJ);
         return $patientCountResult;
