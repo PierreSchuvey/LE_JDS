@@ -16,6 +16,10 @@ class hunts extends dataBase {
         parent::__construct();
     }
 
+    /*
+     * Méthode permettant de récupérer toute les shasses non accomplies
+     */
+
     public function getExistHunt() {
         $query = 'SELECT `idPokemon`, `idUser` FROM `hunts` WHERE `idUser` = :idUser AND `idPokemon` = :idPokemon AND catchStatement = 0';
         $getExistHunt = $this->db->prepare($query);
@@ -25,6 +29,10 @@ class hunts extends dataBase {
         $getExistHunt->execute();
         return $getExistHunt = $getExistHunt->fetch(PDO::FETCH_OBJ);
     }
+
+    /*
+     * Méthode permettant de récolter toute les shasses non accomplies dont l'id utilisateur est celui_ci de la personne connétée
+     */
 
     public function savingHunt() {
         $query = 'UPDATE `hunts` SET nbEncounter=:nbEncounter, idVersion=:idVersion, idMethod=:idMethod WHERE idUser = :idUser AND idPokemon = :idPokemon';
@@ -38,6 +46,10 @@ class hunts extends dataBase {
         return $savingHunt->execute();
     }
 
+    /*
+     * Méthode permettant de modifer la valeur d'une shasse pour la valider
+     */
+
     public function validHunt() {
         $query = 'UPDATE `hunts` SET idVersion = :idVersion, idMethod=:idMethod, nbEncounter=:nbEncounter, endDate = NOW(), catchStatement=1 WHERE idUser = :idUser AND idPokemon = :idPokemon';
         $validHunt = $this->db->prepare($query);
@@ -50,6 +62,10 @@ class hunts extends dataBase {
         return $validHunt->execute();
     }
 
+    /*
+     * Méthode permettant de récupérer les shasses accomplies en fonction d" l'utilisateur connecté, et les informations du pokemon concérné
+     */
+
     public function getFinishedHunt() {
         $query = 'SELECT hunts.id AS id, pokemon.nomPkm AS pokemon, huntMethods.methode AS method, versions.version AS version, hunts.nbEncounter AS nbEncounter,  hunts.endDate AS endDate FROM hunts LEFT JOIN pokemon ON pokemon.id = hunts.idPokemon LEFT JOIN huntMethods ON huntMethods.id = hunts.idMethod LEFT JOIN versions ON versions.id = hunts.idVersion WHERE hunts.idUser = :idUser AND hunts.catchStatement=1 ORDER BY `endDate` DESC';
         $getFinishedHunt = $this->db->prepare($query);
@@ -58,6 +74,10 @@ class hunts extends dataBase {
         $getFinishedHunt->execute();
         return $getFinishedHunt = $getFinishedHunt->fetchAll(PDO::FETCH_OBJ);
     }
+
+    /*
+     * Méthode permettant de récupérer les information des pokemons et de la dérniére shasse accomplie
+     */
 
     public function lastCapture() {
         $query = 'SELECT `hunts`.`nbEncounter` AS `nbEncouter`, `pokemon`.`nomPkm` AS `nomPkm`, `versions`.`version` AS `vesions`, `huntMethods`.`methode` AS `methode` FROM `hunts` INNER JOIN `pokemon` ON `hunts`.`idPokemon` = `pokemon`.`id` INNER JOIN `versions` ON `hunts`.`idVersion` = `versions`.`id` INNER JOIN `huntMethods` ON `hunts`.`idMethod` = `huntMethods`.`id` WHERE `idUser` = :idUser AND `catchStatement` = 1 AND `endDate`=(SELECT MAX(`endDate`) FROM `hunts`)';
@@ -68,6 +88,10 @@ class hunts extends dataBase {
         return $lastCapture = $lastCapture->fetch(PDO::FETCH_OBJ);
     }
 
+    /*
+     * Méthode permettant d'ajout une nouvelle shasses
+     */
+
     public function addNewHunt() {
         $query = 'INSERT INTO `hunts`(`idPokemon`,  `catchStatement`, `idUser`) VALUES(:idPokemon, 0, :idUser)';
         $addNewHunt = $this->db->prepare($query);
@@ -76,6 +100,10 @@ class hunts extends dataBase {
         //Si l'insertion s'est correctement déroulée on retourne vrai
         return $addNewHunt->execute();
     }
+
+    /*
+     * Méthode permettant de récupérer toute les shasses sauvegardé et non fini avec une limite de 11 pour la pagination
+     */
 
     public function getSavedHuntListPagination($offset) {
 
@@ -95,7 +123,7 @@ class hunts extends dataBase {
     }
 
     /**
-     * Récupérer le nombre de patient
+     * Récupérer le nombre de shasses non finies
      */
     public function countSavedhunt() {
         $query = 'SELECT COUNT(`hunts`.`id`) AS `numberOfSavedHunt` FROM `hunts` INNER JOIN `pokemon` ON `pokemon`.`id` = `hunts`.`idPokemon` WHERE `hunts`.`catchStatement`=0 AND `pokemon`.`idGen` = :idGen';
@@ -105,6 +133,10 @@ class hunts extends dataBase {
         $savedHuntCount = $savedHuntCount->fetch(PDO::FETCH_OBJ);
         return $savedHuntCount;
     }
+
+    /*
+     * permet de récupérer les shasses accomplies avec une limite de 7 pour la pagination et triées de l plus récente à la plus ancienne
+     */
 
     public function getFinishedHuntListPagination($offset) {
 
@@ -132,6 +164,10 @@ class hunts extends dataBase {
         return $savedHuntCount;
     }
 
+    /*
+     * Méthode permettant de compter le nombre de shasses acoomplies par génértations
+     */
+
     public function countFinishedHuntByGen() {
 
         //On prépare la requête sql qui insert les champs sélectionnés, les valeurs de type :lastname sont des marqueurs nominatifs
@@ -146,6 +182,10 @@ class hunts extends dataBase {
         }
         return $finishedHuntListByGen;
     }
+
+    /*
+     * Méthode permettant de supprimer les shasses sauvegardées
+     */
 
     public function deleteSavedHunt() {
         $query = 'DELETE FROM `hunts` WHERE `id` = :id';

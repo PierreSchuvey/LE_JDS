@@ -13,7 +13,7 @@ if (!empty($_SESSION['id'])) {
     $start = ($page - 1) * $limit;
     $listShasseurs = $otherUsersList->getPatientListPagination($start);
 
-    $usersCount = $otherUsersList->countPatient();
+    $usersCount = $otherUsersList->countUsers();
     $maxPagination = ceil($usersCount->numberOfUsers / $limit);
 }
 ?>

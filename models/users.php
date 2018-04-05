@@ -14,6 +14,10 @@ class users extends dataBase {
         parent::__construct();
     }
 
+    /*
+     * Méthode permettant de récupérer les données d'inscription en fonction du pseudo renseigné
+     */
+
     public function loginIn() {
         $userLog = $this->db->prepare('SELECT `id`,`pseudo`, `password` FROM `users` WHERE `pseudo` = :pseudo');
         $userLog->bindValue(':pseudo', $this->pseudo, PDO::PARAM_STR);
@@ -43,6 +47,10 @@ class users extends dataBase {
         }
     }
 
+    /*
+     * Méthode permettant de récupérer les informations de tous les utilisateurs hors utilisateur connécté
+     */
+
     public function oterUsersInfos() {
         $otherUsersProfil = $this->db->prepare('SELECT `users`.`id`, `users`.`pseudo`, `users`.`password`, `users`.`friendCode`, `users`.`bioUsers`, `users`.`profilePicture`, `users`.`email`, COUNT(hunts.id) AS `nbUsersHunts` FROM users INNER JOIN `hunts` ON `users`.`id` = `hunts`.`idUser` WHERE pseudo = :pseudo AND `hunts`.`catchStatement`=1');
         $otherUsersProfil->bindValue(':pseudo', $this->pseudo, PDO::PARAM_STR);
@@ -71,6 +79,10 @@ class users extends dataBase {
         return $pseudoList;
     }
 
+    /*
+     * Méthode permettant de récupérer l'id du dérnier utilisateur et de l'incrémenté de 1
+     */
+
     public function lastId() {
         $lastId = $this->db->prepare('SELECT MAX(`id`)+1 AS lastId FROM users');
         $lastId->execute();
@@ -78,6 +90,10 @@ class users extends dataBase {
             return $lastId = $lastId->fetch(PDO::FETCH_OBJ);
         }
     }
+
+    /*
+     * Méthode permettant de récupérer le mot de passe de l'utilisateur
+     */
 
     public function usedPassword() {
         $usedPassword = $this->db->prepare('SELECT password FROM users WHERE id = :id');
@@ -105,6 +121,10 @@ class users extends dataBase {
         return $addUser->execute();
     }
 
+    /*
+     * Méthode permettant de modifier les informations de l'utilisateur
+     */
+
     public function updateInfoUsers() {
         //On prépare la requête sql qui insert dans les champs selectionnés, les valeurs sont des marqueurs nominatifs
         $query = 'UPDATE users SET pseudo = :pseudo, friendCode = :friendCode, bioUsers = :bioUsers WHERE id = :id';
@@ -128,6 +148,10 @@ class users extends dataBase {
         return $updateInfoUsersWithoutPseudo->execute();
     }
 
+    /*
+     * Méthode permettant de modifier l'avatar de l'utilisateur
+     */
+
     public function updateProfilePicture() {
         //On prépare la requête sql qui insert dans les champs selectionnés, les valeurs sont des marqueurs nominatifs
         $query = 'UPDATE users SET profilePicture = :profilePicture WHERE id = :id';
@@ -137,6 +161,10 @@ class users extends dataBase {
         //Si l'insertion s'est correctement déroulée on retourne vrai
         return $updateProfilePicture->execute();
     }
+
+    /*
+     * Méthode permettant de modifier le ot de passe de l'utilisateur
+     */
 
     public function updatePassword() {
         //On prépare la requête sql qui insert dans les champs selectionnés, les valeurs sont des marqueurs nominatifs

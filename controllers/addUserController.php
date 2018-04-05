@@ -121,6 +121,9 @@ if (isset($_POST['validInscrip'])) {
                 mkdir('media/img/' . $nbDirectory . '/', 0777, true);
                 move_uploaded_file($_FILES['profilePicture']['tmp_name'], $dossier . $fichier);
             }
+            /*
+             * On vérifie que le tableau d'érreur est  vide, si c'est le cas on ajout l'utilisateur
+             */
             if (isset($_POST['validInscrip']) && count($formError) == 0) {
                 if (!$user->addUser()) {
                     $formError['add'] = 'Erreur lors de l\'ajout';

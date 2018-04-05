@@ -1,4 +1,3 @@
-<?php ?>
 <form action="#" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="form-group col-lg-offset-2 col-lg-3">
