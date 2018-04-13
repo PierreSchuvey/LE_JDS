@@ -9,9 +9,9 @@ include_once 'controllers/currentPokemon.php';
 <script src="/../assets/js/versionsGenerationsLocal.js"></script>
 <div class="container bodyPage">
     <div class ="row">
-        <div class="col-xs-9 col-sm-offset-2 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-6 tablo">
+        <div class="col-sm-offset-2 col-sm-9 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-6 tablo">
             <table class="nextPreviousTable">
-                <td class="nextPreviousTable" class="col-lg-3"><a href="<?= $selectedPokemon->id <= 1 ? $lastPokemon : $previousPokemon; ?>" id="previousButton" ><<</a></td>
+                <td class="nextPreviousTable"><a href="<?= $selectedPokemon->id <= 1 ? $lastPokemon : $previousPokemon; ?>" id="previousButton" ><<</a></td>
                 <td class="col-lg-2">
                 <center><p>#<?= $selectedPokemon->id <= 1 ? $selectedPokemon->id + $maxId - 1 : $selectedPokemon->id - 1; ?></p></center>
                 <img src="../assets/minSprite/<?= $selectedPokemon->id <= 1 ? $selectedPokemon->id + $maxId - 1 : $selectedPokemon->id - 1; ?>.png" width='80px'></td>
@@ -36,18 +36,8 @@ include_once 'controllers/currentPokemon.php';
             </div>
         </div>
     </div>
-    <div class ="row">
-        <div class="col-lg-12">
-            <div class="col-lg-12">
-                <a href="/shasse_en_cours/<?= $selectedPokemon->nomPkm; ?>" id="beginShasse" class="linkPagePkm">Commencer la shasse !</a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-offset-5">
-            <small><a href="http://www.pokepedia.fr/<?= $currentName; ?>" class="linkPagePkm">Fiche Poképedia</a></small>
-        </div>
-    </div>
+    <center><a href="/shasse_en_cours/<?= $selectedPokemon->nomPkm; ?>"  class="linkPagePkm">Commencer la shasse !</a></center>
+    <center><small><a href="http://www.pokepedia.fr/<?= $currentName; ?>" class="linkPagePkm">Fiche Poképedia</a></small></center>
     <div class="row">
         <div class="col-lg-2">
             <p>Générations<p/>

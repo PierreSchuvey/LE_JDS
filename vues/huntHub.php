@@ -9,7 +9,7 @@
                     <?php
                 } else {
                     ?>
-                    <option>Sélectionnez la version</option>
+                    <option>Versions</option>
                     <?php
                 }
                 foreach ($allVersion as $allVersion) {
@@ -27,7 +27,7 @@
                     <?php
                 } else {
                     ?>
-                    <option>Sélectionnez la version</option>
+                    <option>Méthodes</option>
                     <?php
                 }
                 ?>

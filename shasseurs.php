@@ -51,5 +51,4 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
     </div>
 <?php }
 ?>
-</div>
 <?php include 'vues/footer.php' ?>

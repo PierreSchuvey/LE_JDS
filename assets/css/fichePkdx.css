@@ -24,7 +24,7 @@
     width:200px;
 }
 .tablo{
-    padding-left: 0px;
+    float-left: 0px;
 }
 #tableLocal{
     width:100%;
@@ -40,8 +40,10 @@ td{
 #bodyTableLocal{
     width : 20%;
 }
-@media screen and (min-width : 450px) and (max-width : 767px){
-    .tablo{
-        padding-left : 20%;
+@media screen and (min-width : 300px) and (max-width : 767px){
+    .nextPreviousTable{
+        margin-top: 20px;
+        margin-bottom: 50px;
+        margin-left: 0px;
     }
 }

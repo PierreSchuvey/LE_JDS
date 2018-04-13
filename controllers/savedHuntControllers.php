@@ -5,7 +5,7 @@ if (isset($_GET['idDeleteHunt'])) {
     $deletePokemon->id = $_GET['idDeleteHunt'];
     $deletePokemon->deleteSavedHunt();
 } else {
-    echo 'ma bite';
+
 }
 
 

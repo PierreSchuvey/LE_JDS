@@ -48,7 +48,7 @@
                 </div>
                 <li id="lienancre11"><a href="/pokedex_complet" class="mainTitle" id="subNavTitle" title="pokedex">Pokedex</a></li>
                 <li id="lienancre11"><a href="/shasseurs.php" class="mainTitle" id="subNavTitle" title="experiences">Shasseurs</a></li>
-                <li id="lienancre11"><a href="mailto:pierreschuvey@gmail.com"  class="libelNav">Contact</a></li>
+                <li id="lienancre11"><a href="mailto:pierreschuvey@gmail.com"  class="mainTitle">Contact</a></li>
             </div>
         </ul>
         <div class="row">

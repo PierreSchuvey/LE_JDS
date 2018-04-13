@@ -1,3 +1,6 @@
+#versionSelected, #allMethodsByVersion{
+    width : 100%;
+}
 .modal{
     background-color: rgba(242, 227, 227, 0.5);
 }

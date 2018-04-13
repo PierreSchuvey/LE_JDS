@@ -196,9 +196,9 @@ class users extends dataBase {
     }
 
     /**
-     * Récupérer le nombre de patient
+     * Récupérer le nombre d'utilisateurs
      */
-    public function countPatient() {
+    public function countUsers() {
         $query = 'SELECT COUNT(`id`) AS `numberOfUsers` FROM `users`';
         $patientCount = $this->db->query($query);
         $patientCountResult = $patientCount->fetch(PDO::FETCH_OBJ);

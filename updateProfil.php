@@ -43,7 +43,7 @@ if (isset($_GET['infosUsersUpdate'])) {
                 </div>
             </div>
             <div class="form-group form-group col-lg-offset-8 col-lg-2">
-                <button type="submit" class="form-control" name="updateInfos"> Valider l'inscription</button>
+                <button type="submit" class="form-control" name="updateInfos"> Valider modification</button>
             </div>
         </form>
     </div>
@@ -65,7 +65,7 @@ if (isset($_GET['infosUsersUpdate'])) {
             </div>
             <div class="row">
                 <div class="form-group col-lg-offset-4 col-lg-4">
-                    <input type="submit" class="btn" name="updatePicture" value="Valider la modification de l'image de profil">
+                    <input type="submit" class="btn" name="updatePicture" value="Valider modification">
                 </div>
             </div>
         </form>
@@ -101,7 +101,7 @@ if (isset($_GET['infosUsersUpdate'])) {
             ?>
             <div class="row">
                 <div class="form-group col-lg-offset-4 col-lg-4">
-                    <input type="submit" class="btn" name="updatePassword" value="Valider la modification de l'image de profil">
+                    <input type="submit" class="btn" name="updatePassword" value="Valider modification">
                 </div>
             </div>
         </form>
