@@ -11,6 +11,10 @@ class methodes extends dataBase {
         parent::__construct();
     }
 
+    /*
+     * Méthode permettant de récupérer tous les métodes de shasses par versions
+     */
+
     public function getMethodsByVersion() {
         $allMethods = $this->db->prepare('SELECT huntMethods.id, huntMethods.methode FROM huntMethods INNER JOIN versions ON versions.id = huntMethods.idVersion WHERE versions.id = :id');
         $allMethods->bindValue(':id', $this->id, PDO::PARAM_INT);

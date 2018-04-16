@@ -21,7 +21,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
             <tbody>
                 <?php
                 if (empty($finishedHuntList)) {
-                    ?><center><p>Vous n'avez pas de shasses en cours </p><?php
+                    ?><center><p>Vous avez terminé aucune shasses ! </p><?php
                     } else {
                         foreach ($finishedHuntList as $finishedHuntList) {
                             ?>

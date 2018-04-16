@@ -3,7 +3,7 @@
 class hunts extends dataBase {
 
     public $id = 0;
-    public $idPokemon = '';
+    public $idPokemon = 0;
     public $idVersion = 0;
     public $idMethod = 0;
     public $nbEncounter = 0;

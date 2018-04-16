@@ -10,6 +10,10 @@ class versions extends dataBase {
         parent::__construct();
     }
 
+    /*
+     * Méthode permettant de sélectionner les versions en fonction d'une generation
+     */
+
     public function firstGeneration() {
         $firstGeneration = $this->db->prepare('SELECT version FROM versions WHERE idGeneration = :idGeneration');
         $firstGeneration->bindValue(':idGeneration', $this->idGeneration, PDO::PARAM_STR);
@@ -17,6 +21,10 @@ class versions extends dataBase {
         $firstGeneration = $firstGeneration->fetchAll(PDO::FETCH_OBJ);
         return $firstGeneration;
     }
+
+    /*
+     * Méthode permettant de sélectionner toute les versions
+     */
 
     public function getAllVersions() {
         $query = 'SELECT id, version FROM versions';

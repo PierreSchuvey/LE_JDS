@@ -10,6 +10,10 @@ class pokemons extends dataBase {
         parent::__construct();
     }
 
+    /*
+     * Méthode permettant de récupérer tous les pokemons
+     */
+
     public function getAllPokemon() {
         $query = 'SELECT `id`, `nomPkm` FROM `pokemon`';
         $allPokemon = $this->db->query($query);
@@ -19,6 +23,10 @@ class pokemons extends dataBase {
         return $allPokemon;
     }
 
+    /*
+     * méthode permettant de récupérer tous les pokemons capturé
+     */
+
     public function getCatchedPokemonById() {
         $getCatchedPokemonById = $this->db->prepare('SELECT pokemon.id AS id, hunts.catchStatement AS catchStatement, hunts.idUser AS idUser FROM `pokemon` LEFT JOIN `hunts` ON pokemon.id = hunts.idPokemon WHERE pokemon.idGen = :idGen ORDER BY pokemon.id ASC');
         $getCatchedPokemonById->bindValue(':idGen', $this->idGen, PDO::PARAM_INT);
@@ -26,6 +34,10 @@ class pokemons extends dataBase {
         $getCatchedPokemonById = $getCatchedPokemonById->fetchAll(PDO::FETCH_OBJ);
         return $getCatchedPokemonById;
     }
+
+    /*
+     * Methode permettant de récupérer 1 pokemon en fonction de son Id
+     */
 
     public function getOnePokemon() {
         $thePokemon = $this->db->prepare('SELECT `nomPkm` FROM `pokemon` WHERE `id` = :id');
@@ -35,6 +47,10 @@ class pokemons extends dataBase {
         return $thepokemonName;
     }
 
+    /*
+     * Métode permettant de récupérer un pokemon en fonction de son nom
+     */
+
     public function currentPokemon() {
         $currentPokemon = $this->db->prepare('SELECT id, nomPkm FROM pokemon WHERE nomPkm = :nomPkm');
         $currentPokemon->bindValue(':nomPkm', $this->nomPkm, PDO::PARAM_STR);
@@ -42,6 +58,10 @@ class pokemons extends dataBase {
         $currentPokemon = $currentPokemon->fetch(PDO::FETCH_OBJ);
         return $currentPokemon;
     }
+
+    /*
+     * Méthode permettant de récupérer le pokemon précédant
+     */
 
     public function previousPokemon() {
         $previousPokemon = $this->db->prepare('SELECT id, nomPkm FROM `pokemon` WHERE `id` = :id');
@@ -51,6 +71,10 @@ class pokemons extends dataBase {
         return $previousPokemon;
     }
 
+    /*
+     * Méthode permettant de récupérer le pokemon suivant
+     */
+
     public function nextPokemon() {
         $nextPokemon = $this->db->prepare('SELECT id, nomPkm FROM `pokemon` WHERE `id` = :id');
         $nextPokemon->bindValue(':id', $this->id, PDO::PARAM_STR);
@@ -59,6 +83,10 @@ class pokemons extends dataBase {
         return $nextPokemon;
     }
 
+    /*
+     * Méthode permettant de récupérer le premier pokemon
+     */
+
     public function firstPokemon() {
         $firstPokemon = $this->db->prepare('SELECT id, nomPkm FROM `pokemon` WHERE `id` = 1');
         $firstPokemon->bindValue(':id', $this->id, PDO::PARAM_STR);
@@ -66,6 +94,10 @@ class pokemons extends dataBase {
         $firstPokemon = $firstPokemon->fetch(PDO::FETCH_OBJ);
         return $firstPokemon;
     }
+
+    /*
+     * Méthode permettant de récupérer le premier pokemon en fonction de la génération
+     */
 
     public function firstPokemonByGen() {
         $query = 'SELECT `id`, `nomPkm` FROM `pokemon` WHERE `id` = (SELECT MIN(`id`) FROM `pokemon` WHERE `idGen` = :idGen)';
@@ -76,12 +108,20 @@ class pokemons extends dataBase {
         return $lastpokemonByGen;
     }
 
+    /*
+     * Méthode permetant de récupérer le dernier pokemon
+     */
+
     public function lastPokemon() {
         $lastPokemon = $this->db->prepare('SELECT id, nomPkm FROM `pokemon` WHERE `id` = (SELECT MAX(`id`) FROM `pokemon`)');
         $lastPokemon->execute();
         $lastPokemon = $lastPokemon->fetch(PDO::FETCH_OBJ);
         return $lastPokemon;
     }
+
+    /*
+     * Méthode permettant de récupérer le dernier pokemon en fonction de la génération
+     */
 
     public function lastPokemonByGen() {
         $query = 'SELECT `id`, `nomPkm` FROM `pokemon` WHERE `id` = (SELECT MAX(`id`) FROM `pokemon` WHERE `idGen` = :idGen)';

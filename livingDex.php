@@ -11,7 +11,7 @@ if (isset($_SESSION['connected']) && isset($_SESSION['id']) && $_SESSION['connec
     <div class="container bodyPage">
         <div class="row">
             <span class="col-lg-12 pokedexCase">
-                <h2 class="mainTitle">1ére Génération</h2>
+                <h2 class="mainTitle">Génération <?= $_GET['idGen'] ?></h2>
                 <div class="box">
                     <?php
                     foreach ($catchedPokemon as $catchedPokemon) {

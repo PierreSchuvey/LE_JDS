@@ -8,7 +8,7 @@ include_once 'vues/lastCapture.php';
 ?>
 <div class="container bodyPage">
     <div class="col-xs-offset-2">
-        <h2 class="mainTitle">1ére Génération</h2>
+        <h2 class="mainTitle">Généraion <?= $_GET['nbGen'] ?></h2>
     </div>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10 pokedexCase">
