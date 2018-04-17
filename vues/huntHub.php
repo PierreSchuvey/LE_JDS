@@ -3,9 +3,9 @@
         <div class="form-group col-lg-offset-2 col-lg-3">
             <p><label>Version : </label></p>
             <select name="versionSelected" id="versionSelected" class="btn">
-                <?php if (!empty($_GET['version'])) {
+                <?php if (isset($savingHunt->version)) {
                     ?>
-                    <option class="btn"><?= $_GET['version']; ?></option>
+                    <option class="btn" value="<?= $savingHunt->version; ?>"><?= $savingHunt->version; ?></option>
                     <?php
                 } else {
                     ?>
@@ -21,9 +21,9 @@
         <div class="form-group col-lg-offset-2 col-lg-3">
             <p><label>Methode : </label></p>
             <select name="methodSelected" id="allMethodsByVersion" class="btn">
-                <?php if (!empty($_GET['method'])) {
+                <?php if (isset($savingHunt->method)) {
                     ?>
-                    <option><?= $_GET['method']; ?></option>
+                    <option><?= $savingHunt->method; ?></option>
                     <?php
                 } else {
                     ?>
@@ -34,7 +34,7 @@
             </select>
         </div>
     </div>
-    <input type="number" name="encounterCount" id="counter" value="<?= !empty($_GET['nbEncounter']) ? $_GET['nbEncounter'] : '0' ?>">
+    <input type="number" name="encounterCount" id="counter" value="<?= isset($savingHunt->nbEncounters) ? $savingHunt->nbEncounters : '0' ?>">
     <center><div class="row">
             <input type="submit" value="Sauvegarder la shasse !" name="saveHunt" class="btn">
             <input type="submit" value="Capturé !" name="validHunt" class="btn">

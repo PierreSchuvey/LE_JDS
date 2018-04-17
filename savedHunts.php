@@ -48,7 +48,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 1) {
                             <td><?= $listSavedHunt->version; ?></td>
                             <td><?= $listSavedHunt->method; ?></td>
                             <td><?= $listSavedHunt->nbEncounter; ?></td>
-                            <td><a href="/reprise_de_la_shasse/<?= $listSavedHunt->pokemon; ?>_<?= $listSavedHunt->version; ?>_<?= $listSavedHunt->method; ?>_<?= $listSavedHunt->nbEncounter; ?>" type="submit"><img src="/assets/img/loupepkm.png"></a></td>
+                            <td><a href="/reprise_de_la_shasse/<?= $listSavedHunt->id; ?>_<?= $listSavedHunt->pokemon; ?>" type="submit"><img src="/assets/img/loupepkm.png"></a></td>
                             <td><a name="registration-button" class="registration-link btn btn-danger" data-toggle="modal" data-target="#EditProfile<?= $listSavedHunt->id; ?>"><i class="fas fa-lock"></i> Supprimer</a></td>
                         </tr>
                         <?php

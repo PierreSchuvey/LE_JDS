@@ -24,8 +24,13 @@ if (!empty($_SESSION['id']) && $_SESSION['id'] != 0) {
         //Appéle de la mèthode addNewhunt()
         $addNewHunt = $controlHunts->addNewHunt();
     }
+    if (isset($_GET['idHunt'])) {
+        $controlHunts->id = $_GET['idHunt'];
+        $savingHunt = $controlHunts->getSavedHuntInfos();
+    }
 //Vérification que l'index savedHunt est bien instancié
     if (isset($_POST['saveHunt'])) {
+        $controlHunts->id = $_GET['idHunt'];
         $controlHunts->idMethod = $_POST['methodSelected'];
         $controlHunts->idVersion = $_POST['versionSelected'];
         $controlHunts->nbEncounter = $_POST['encounterCount'];

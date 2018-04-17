@@ -17,6 +17,19 @@ class hunts extends dataBase {
     }
 
     /*
+     * Méthode permettant de récupérer les infos d'une shasse sauvegardé en fonction de son Id
+     */
+
+    public function getSavedHuntInfos() {
+        $query = 'SELECT `huntMethods`.`methode` AS `method`, `versions`.`version` AS `version`, `hunts`.`nbEncounter` AS `nbEncounters` FROM `hunts` INNER JOIN `versions` ON `hunts`.`idVersion`=`versions`.`id` INNER JOIN `huntMethods` ON `hunts`.`idMethod` = `huntMethods`.`id` WHERE `hunts`.`id` = :id';
+        $getExistHunt = $this->db->prepare($query);
+        $getExistHunt->bindValue(':id', $this->id, PDO::PARAM_INT);
+        //Si l'insertion s'est correctement déroulée on retourne vrai
+        $getExistHunt->execute();
+        return $getExistHunt = $getExistHunt->fetch(PDO::FETCH_OBJ);
+    }
+
+    /*
      * Méthode permettant de récupérer toute les shasses non accomplies
      */
 
@@ -35,13 +48,10 @@ class hunts extends dataBase {
      */
 
     public function savingHunt() {
-        $query = 'UPDATE `hunts` SET nbEncounter=:nbEncounter, idVersion=:idVersion, idMethod=:idMethod WHERE idUser = :idUser AND idPokemon = :idPokemon';
+        $query = 'UPDATE `hunts` SET nbEncounter=:nbEncounter WHERE id = :id';
         $savingHunt = $this->db->prepare($query);
         $savingHunt->bindValue(':nbEncounter', $this->nbEncounter, PDO::PARAM_INT);
-        $savingHunt->bindValue(':idVersion', $this->idVersion, PDO::PARAM_INT);
-        $savingHunt->bindValue(':idMethod', $this->idMethod, PDO::PARAM_INT);
-        $savingHunt->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
-        $savingHunt->bindValue(':idPokemon', $this->idPokemon, PDO::PARAM_INT);
+        $savingHunt->bindValue(':id', $this->id, PDO::PARAM_INT);
         //Si l'insertion s'est correctement déroulée on retourne vrai
         return $savingHunt->execute();
     }
@@ -51,10 +61,8 @@ class hunts extends dataBase {
      */
 
     public function validHunt() {
-        $query = 'UPDATE `hunts` SET idVersion = :idVersion, idMethod=:idMethod, nbEncounter=:nbEncounter, endDate = NOW(), catchStatement=1 WHERE idUser = :idUser AND idPokemon = :idPokemon';
+        $query = 'UPDATE `hunts` SET nbEncounter=:nbEncounter, endDate = NOW(), catchStatement=1 WHERE idUser = :idUser AND idPokemon = :idPokemon';
         $validHunt = $this->db->prepare($query);
-        $validHunt->bindValue(':idVersion', $this->idVersion, PDO::PARAM_INT);
-        $validHunt->bindValue(':idMethod', $this->idMethod, PDO::PARAM_INT);
         $validHunt->bindValue(':nbEncounter', $this->nbEncounter, PDO::PARAM_INT);
         $validHunt->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         $validHunt->bindValue(':idPokemon', $this->idPokemon, PDO::PARAM_INT);
